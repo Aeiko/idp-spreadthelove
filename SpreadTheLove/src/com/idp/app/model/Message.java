@@ -3,6 +3,7 @@ package com.idp.app.model;
 public class Message {
 	private String title;
 	private String content;
+	private int id;
 	
 	public String getTitle() {
 		return title;
@@ -15,5 +16,11 @@ public class Message {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 }

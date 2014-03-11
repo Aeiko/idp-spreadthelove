@@ -10,11 +10,11 @@
         <script src="js/vendor/modernizr.js"></script>
     </head>
     <body>
-        <div class="contain-to-grid sticky" data-options="sticky_on: large">
+        <div class="contain-to-grid sticky" data-options="st icky_on: large">
             <nav class="top-bar" data-topbar>
                 <ul class="title-area">
                     <li class="name">
-                        <h1><a href="#">Spread the love</a></h1>
+                        <h1><a href="#">Hi Anonymous#1101</a></h1>
                     </li>
                     <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
                 </ul>
@@ -38,15 +38,37 @@
                                 <div class="small-12 columns text-left">
                                     <h4><small><b>Sort by: &nbsp;</b><button class="tiny round secondary"><i class="fa fa-fw fa-rocket"></i> Popular</button> <button class="tiny round secondary"><i class="fa fa-clock-o fa-fw"></i> Recent</button></small></h4>  
                                 </div>
-                                
-                                
-                                <div class="small-12 columns">
-                                    #12345
-                                    <p class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec quam a sapien fringilla vulputate. Fusce a posuere mauris, egestas dictum lacus. Mauris eget hendrerit ligula, sed facilisis lorem. Morbi ut leo et tortor facilisis pharetra cursus a lorem. Morbi hendrerit faucibus arcu in malesuada. Donec lacinia vulputate metus sit amet viverra.</p> 
-                                    <a href="#" class="button tiny radius success"><i class="fa fa-fw fa-thumbs-o-up"></i> I feel you</a>
-                                    
-                                    <a href="#" class="button tiny radius "><i class="fa fa-fw fa-magnet"></i> Follow post</a>
-                                </div>
+                                <fieldset>
+                                <fieldset>
+	                                	<legend><h6>Ask a question...<i class=" fa fa-comment-o"></i> It's safe in here! :) </h6></legend>
+	                                	<textarea placeholder="Ask something or confide in us. We will try our best to help you."></textarea>
+	                                </fieldset>
+	                                
+	                                <c:forEach var="message" items="${actionBean.mList}">
+	                                	<div class="small-12 columns panel">
+	                                	#${message.getId()}
+	                                	<p class="message-content">${message.getContent() }</p> 
+	                                	
+	                                	<ul class="button-group">
+				                            <li><a href="#" class="alert tiny radius  button"><i class="fa fa-hand-o-up "></i> I Feel You</a></li>
+				                            <li><a href="#" class="button tiny radius "><i class=" fa fa-arrow-circle-up "></i> Follow Post</a></li>
+				                            <li><a href="#" class="button tiny radius "><i class=" fa fa-comment-o "></i> View Comments</a></li>
+				                            <li><a href="#" class="button tiny radius "><i class=" fa fa-pencil "></i> Reply</a></li>
+				                        </ul>
+	                                </c:forEach>	
+	                                <div class="small-12 columns panel">
+	                                    #12345
+	                                    <p class="message-content">Why is the sky blue?</p> 
+	                                    
+	                                     <ul class="button-group">
+				                            <li><a href="#" class="alert tiny radius  button"><i class="fa fa-hand-o-up "></i> I Feel You</a></li>
+				                            <li><a href="#" class="button tiny radius "><i class=" fa fa-arrow-circle-up "></i> Follow Post</a></li>
+				                            <li><a href="#" class="button tiny radius "><i class=" fa fa-comment-o "></i> View Comments</a></li>
+				                            <li><a href="#" class="button tiny radius "><i class=" fa fa-pencil "></i> Reply</a></li>
+				                        </ul>
+	                                  
+	                                </div>
+                                </fieldset>
                             </div>
                         </div>
                         <!-- Side Bar Nav -->
