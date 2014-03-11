@@ -54,8 +54,8 @@
                             <input tabindex="1" type="search" placeholder="Search" >
                             <ul class="side-nav">
                                 <li class="active"><a href="#"><i class="fa fa-home fa-fw"></i> Home</a></li>
-                                <li><a href="/SpreadTheLove/activity"><i class="fa fa-bolt fa-fw"></i> Activity</a></li>
-                                <li><a href="/SpreadTheLove/questions"><i class="fa fa-lightbulb-o fa-fw" ></i> Questions I asked</a></li>
+                                <li><a href="/SpreadTheLove/activity.action"><i class="fa fa-bolt fa-fw"></i> Activity</a></li>
+                                <li><a href="/SpreadTheLove/questions.action"><i class="fa fa-lightbulb-o fa-fw" ></i> Questions I asked</a></li>
                                 <li><a href="#"><i class="fa fa-anchor fa-fw"></i> Posts I follow</a></li>
                             </ul>
                         </div>

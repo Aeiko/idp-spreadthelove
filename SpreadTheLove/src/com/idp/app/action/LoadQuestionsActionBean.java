@@ -5,10 +5,10 @@ import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 
-@UrlBinding("/SpreadTheLove/questions")
+@UrlBinding("/questions.action")
 public class LoadQuestionsActionBean {
 	@DefaultHandler
 	public Resolution view(){
-		return new ForwardResolution("/SpreadTheLove/questions.jsp");
+		return new ForwardResolution("/questions.jsp");
 	}
 }
