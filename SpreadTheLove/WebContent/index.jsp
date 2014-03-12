@@ -113,6 +113,7 @@
 									type="password" placeholder="******">
 								<s:submit name="login" class="tiny radius button success"
 									value="login" />
+									<a href="/SpreadTheLove/passwordReset.action">Forget Password</a>
 							</div>
 						</s:form>
 
