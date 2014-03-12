@@ -14,7 +14,14 @@
                         <param-name>ActionResolver.Packages</param-name>
                         <param-value>com.idp.app.action</param-value> <!-- your action package roots(s) go here -->
                 </init-param>
+                <init-param>
+		            <param-name>Extension.Packages</param-name>
+		            <param-value>com.idp.app.ext, org.stripesstuff.stripersist</param-value>
+		        </init-param>
         </filter>
+        
+        
+            
         
         <filter-mapping>
                 <filter-name>StripesFilter</filter-name>

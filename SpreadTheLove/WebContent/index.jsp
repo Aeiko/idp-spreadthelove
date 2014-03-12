@@ -125,8 +125,8 @@
 						<!--<h1>Orbit does content now.</h1>
 						<h3>Highlight me...I'm text.</h3>-->
 					</div>
-					<img src="img/overflow.jpg" /> <img src="img/captions.jpg"
-						data-caption="#htmlCaption" /> <img src="img/features.jpg" />
+					<img src="img/spread the love-01.png" /> <img src="img/spread the love-02.png">
+					
 				</div>
 
 				<fieldset>

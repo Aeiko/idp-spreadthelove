@@ -1,3 +1,7 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="http://stripes.sourceforge.net/stripes.tld"%>
+<%@ taglib prefix="d" uri="http://stripes.sourceforge.net/stripes-dynattr.tld"%>
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
@@ -14,7 +18,7 @@
             <nav class="top-bar" data-topbar>
                 <ul class="title-area">
                     <li class="name">
-                        <h1><a href="#">Hi Anonymous#1101</a></h1>
+                        <h1><a href="#">Hi ${actionBean.context.user.username }</a></h1>
                     </li>
                     <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
                 </ul>
@@ -22,7 +26,7 @@
                     <!-- Right Nav Section -->
                     <ul class="right">
                         <li class="divider"></li>
-                        <li><a href="#"><i class="fa fa-power-off fa-fw"></i> Logout</a></li>
+                        <li><a href="/SpreadTheLove"><i class="fa fa-power-off fa-fw"></i> Logout</a></li>
                     </ul>
                 </section>
             </nav>
@@ -34,47 +38,53 @@
                         <!-- Posts Listing -->
                         <div class="small-8 columns">
                             <br>
-                            <div class="row">
-                                <div class="small-12 columns text-left">
-                                    <h4><small><b>Sort by: &nbsp;</b><button class="tiny round secondary"><i class="fa fa-fw fa-rocket"></i> Popular</button> <button class="tiny round secondary"><i class="fa fa-clock-o fa-fw"></i> Recent</button></small></h4>  
-                                </div>
+                            <div class="row">           
                                 <fieldset>
-                                <fieldset>
-	                                	<legend><h6>Ask a question...<i class=" fa fa-comment-o"></i> It's safe in here! :) </h6></legend>
-	                                	<textarea placeholder="Ask something or confide in us. We will try our best to help you."></textarea>
-	                                </fieldset>
+	                                <legend><h6>Ask a question...<i class=" fa fa-comment-o"></i> It's safe in here! :) </h6></legend>
 	                                
-	                                <c:forEach var="message" items="${actionBean.mList}">
-	                                	<div class="small-12 columns panel">
-	                                	#${message.getId()}
-	                                	<p class="message-content">${message.getContent() }</p> 
-	                                	
-	                                	<ul class="button-group">
-				                            <li><a href="#" class="alert tiny radius  button"><i class="fa fa-hand-o-up "></i> I Feel You</a></li>
-				                            <li><a href="#" class="button tiny radius "><i class=" fa fa-arrow-circle-up "></i> Follow Post</a></li>
-				                            <li><a href="#" class="button tiny radius "><i class=" fa fa-comment-o "></i> View Comments</a></li>
-				                            <li><a href="#" class="button tiny radius "><i class=" fa fa-pencil "></i> Reply</a></li>
-				                        </ul>
-	                                </c:forEach>	
-	                                <div class="small-12 columns panel">
-	                                    #12345
-	                                    <p class="message-content">Why is the sky blue?</p> 
-	                                    
-	                                     <ul class="button-group">
-				                            <li><a href="#" class="alert tiny radius  button"><i class="fa fa-hand-o-up "></i> I Feel You</a></li>
-				                            <li><a href="#" class="button tiny radius "><i class=" fa fa-arrow-circle-up "></i> Follow Post</a></li>
-				                            <li><a href="#" class="button tiny radius "><i class=" fa fa-comment-o "></i> View Comments</a></li>
-				                            <li><a href="#" class="button tiny radius "><i class=" fa fa-pencil "></i> Reply</a></li>
-				                        </ul>
-	                                  
+	                                <s:form action="/postquestion.action">
+	                                	<input type="text" name="title" placeholder="Title of post">
+	                                	<textarea name="message" placeholder="Ask something or confide in us. We will try our best to help you."></textarea>
+	                               		<s:submit name="post" class="tiny radius button success" value="Post" />
+	                                </s:form>
+	                            </fieldset>
+                                
+                                <fieldset>
+                                	
+                                	<div class="small-12 columns text-left">
+	                                    <h4><small><b>Sort by: &nbsp;</b><button class="tiny round secondary"><i class="fa fa-fw fa-rocket"></i> Popular</button> <button class="tiny round secondary"><i class="fa fa-clock-o fa-fw"></i> Recent</button></small></h4>  
 	                                </div>
+                                	
+                                	<legend>Recent Posts</legend>
+									<c:if test="${actionBean.mList.size() > 0 }">
+		                                <c:forEach var="message" items="${actionBean.mList}">
+		                                	<div class="small-12 columns panel">
+		                                	#${message.getId()}
+		                         			<p>Title: ${message.getTitle()}</p> 
+		                                	<p class="message-content">${message.getContent()}</p> 
+		                                	
+		                                	
+		                                	<br>
+		                                	<br>
+		                                	<br>
+		                                	<ul class="button-group">
+					                            <li><a href="#" class="alert tiny radius  button"><i class="fa fa-hand-o-up "></i> I Feel You</a></li>
+					                            <li><a href="#" class="button tiny radius "><i class=" fa fa-arrow-circle-up "></i> Follow Post</a></li>
+					                            <li><a href="#" class="button tiny radius "><i class=" fa fa-comment-o "></i> View Comments</a></li>
+					                            <li><a href="#" class="button tiny radius "><i class=" fa fa-pencil "></i> Reply</a></li>
+					                        </ul>
+					                        </div>
+		                                </c:forEach>
+	                                </c:if>	 
                                 </fieldset>
                             </div>
                         </div>
                         <!-- Side Bar Nav -->
                         <div class="small-4 columns sidebar" style="min-height: 500px">
                             <input tabindex="1" type="search" placeholder="Search" >
+                            <button type="submit" class="tiny" id="searchbtn">Submit</button>
                             <ul class="side-nav">
+                            	<li><a href="/SpreadTheLove/activity.action"><i class="fa fa-user fa-fw"></i>My Account</a></li>
                                 <li class="active"><a href="#"><i class="fa fa-home fa-fw"></i> Home</a></li>
                                 <li><a href="/SpreadTheLove/activity.action"><i class="fa fa-bolt fa-fw"></i> Activity</a></li>
                                 <li><a href="/SpreadTheLove/questions.action"><i class="fa fa-lightbulb-o fa-fw" ></i> Questions I asked</a></li>
@@ -90,6 +100,9 @@
         <script src="js/foundation.min.js"></script>
         <script>
             $(document).foundation();
+        </script>
+        <script>
+        	$( '#register' ).click(function() {
         </script>
     </body>
 </html>

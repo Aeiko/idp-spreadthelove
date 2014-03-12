@@ -28,18 +28,25 @@ public class RegisterActionBean extends BaseActionBean{
 		m1.setId(11999);
 		
 		Message m2 = new Message();
-		m1.setContent("MY FATHER THROWS STUFF AT ME EVERYDAY. One time, he threw the remote controller so hard at me, it cut my forehead. Please help me!");
-		m1.setTitle("My father is a monster");
-		m1.setId(345678);
+		m2.setContent("MY FATHER THROWS STUFF AT ME EVERYDAY. One time, he threw the remote controller so hard at me, it cut my forehead. Please help me!");
+		m2.setTitle("My father is a monster");
+		m2.setId(345678);
 		
-		mList = new ArrayList<Message>();
+		Message m3 = new Message();
+		m3.setContent("MY MOM slaps me EVERYDAY. One time, she slapped me so hard, I thought I met my maker. hurhurhur :(");
+		m3.setTitle("My mom is a monster");
+		m3.setId(345678);
+		
+		mList = dao.getMessages();
 		mList.add(m1);
 		mList.add(m2);
-		
+		mList.add(m3);
 		dao.setMessages(mList);
-	
+		
+		getContext().setUser(user);
 		
 		return new ForwardResolution("/home.jsp");
+
 	}
 
 	public String getUsername() {
@@ -62,10 +69,6 @@ public class RegisterActionBean extends BaseActionBean{
 		return user;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
-	}
-
 	public ArrayList<Message> getmList() {
 		return mList;
 	}
@@ -73,4 +76,10 @@ public class RegisterActionBean extends BaseActionBean{
 	public void setmList(ArrayList<Message> mList) {
 		this.mList = mList;
 	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
 }
