@@ -100,6 +100,7 @@
 								Password<input
 									name="password" id="createNewUserPassword" type="password"
 									placeholder="******">
+								<input name="displayName" type="hidden" id="displayName" value="Anonymous #1101">
 								<s:submit name="register" class="tiny radius button success" id="register"
 									value="register" />
 							</div>
@@ -207,12 +208,10 @@
 
             var username = $('#createNewUserName').val();
             var password = $('#createNewUserPassword').val(); 
-            
-            alert(username);
-            alert(password);
+            var displayName = $('#displayName').val();
             var userRef =dataRef.child('users/'+username.toString()); 
             
-            userRef.set({username: username, password: password});  
+            userRef.set({username: username, password: password, displayname: displayName});  
         });
         
     </script>

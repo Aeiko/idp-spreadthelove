@@ -1,6 +1,7 @@
 package com.idp.app.action;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import com.idp.app.model.Message;
 import com.idp.app.model.User;
@@ -10,7 +11,6 @@ import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.SessionScope;
 import net.sourceforge.stripes.action.UrlBinding;
-import net.sourceforge.stripes.controller.FlashScope;
 
 @UrlBinding("/register.action")
 @SessionScope
@@ -19,13 +19,16 @@ public class RegisterActionBean extends BaseActionBean{
 	private String password;
 	private User user;
 	private ArrayList<Message> mList;
-	
+	private String displayName;
+
 	public Resolution register(){
 		
-		FlashScope.getCurrent(getContext().getRequest(), true).put(this);
+		Random random = new Random();
+		
 		user = new User();
 		user.setUsername(username);
 		user.setPassword(password);
+		user.setDisplayName(displayName);
 		
 		Message m1 = new Message();
 		m1.setContent("Why is the sky blue? And orange in the evening!");
@@ -87,6 +90,15 @@ public class RegisterActionBean extends BaseActionBean{
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
+	public String getDisplayName() {
+		return displayName;
+	}
+
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
+
 
 
 }

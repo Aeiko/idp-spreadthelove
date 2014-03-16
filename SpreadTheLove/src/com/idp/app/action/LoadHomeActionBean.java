@@ -8,9 +8,11 @@ import com.idp.app.model.User;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
+import net.sourceforge.stripes.action.SessionScope;
 import net.sourceforge.stripes.action.UrlBinding;
 
 @UrlBinding("/home.action")
+@SessionScope
 public class LoadHomeActionBean extends BaseActionBean{
 	
 	private String username;

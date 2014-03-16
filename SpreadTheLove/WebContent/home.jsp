@@ -19,7 +19,7 @@
             <nav class="top-bar" data-topbar>
                 <ul class="title-area">
                     <li class="name">
-                        <h1><a href="#">Hi ${actionBean.context.user.username }</a></h1>
+                        <h1><a href="#">Hi ${actionBean.context.user.displayName }</a></h1>
                     </li>
                     <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
                 </ul>
@@ -44,9 +44,9 @@
 	                                <legend><h6>Ask a question...<i class=" fa fa-comment-o"></i> It's safe in here! :) </h6></legend>
 	                                
 	                                <s:form action="/postquestion.action">
-	                                	<input type="text" name="title" placeholder="Title of post">
-	                                	<textarea name="message" placeholder="Ask something or confide in us. We will try our best to help you."></textarea>
-	                               		<s:submit name="post" class="tiny radius button success" value="Post" />
+	                                	<input id="title" type="text" name="title" placeholder="Title of post">
+	                                	<textarea id="message" name="message" placeholder="Ask something or confide in us. We will try our best to help you."></textarea>
+	                               		<s:submit id="post" name="post" class="tiny radius button success" value="Post" />
 	                                </s:form>
 	                            </fieldset>
                                 
@@ -101,14 +101,21 @@
         <script src="js/foundation.min.js"></script>
         
         <script>
-        var dataRef = new Firebase("https://crackling-fire-5927.firebaseio.com");
+        var msgRef = new Firebase("https://crackling-fire-5927.firebaseio.com/users/James/messages");
+        $( '#post' ).click(function() {
+    		
+    		var title = $('#title').val();
+    		var message = $('#message').val();
+    		var id = msgRef.push().name();
+             msgRef.set({title: title, message: message, id: id}); 
+    		
+    	});
         
+    
         </script>
         <script>
             $(document).foundation();
         </script>
-        <script>
-        	$( '#register' ).click(function() {
-        </script>
+
     </body>
 </html>
