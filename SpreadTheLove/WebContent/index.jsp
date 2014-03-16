@@ -30,6 +30,7 @@
 <!-- Attach necessary JS -->
 <script type="text/javascript" src="js/vendor/jquery.js"></script>
 <script type="text/javascript" src="js/vendor/jquery.orbit-1.3.0.js"></script>
+<script src="https://cdn.firebase.com/v0/firebase.js"></script>
 <!--[if IE]>
 			     <style type="text/css">
 			         .timer { display: none !important; }
@@ -94,10 +95,12 @@
 						<s:form action="/register.action">
 							<div>
 								Username<input name="username" id="createNewUserName"
-									type="text" placeholder="No real names!"> Password<input
+									type="text" placeholder="No real names!"> 
+									
+								Password<input
 									name="password" id="createNewUserPassword" type="password"
 									placeholder="******">
-								<s:submit name="register" class="tiny radius button success"
+								<s:submit name="register" class="tiny radius button success" id="register"
 									value="register" />
 							</div>
 						</s:form>
@@ -198,7 +201,21 @@
 			</div>
 		</div>
 	</div>
+	<script>
+        var dataRef = new Firebase("https://crackling-fire-5927.firebaseio.com");
+        $( '#register' ).click(function() {
 
+            var username = $('#createNewUserName').val();
+            var password = $('#createNewUserPassword').val(); 
+            
+            alert(username);
+            alert(password);
+            var userRef =dataRef.child('users/'+username.toString()); 
+            
+            userRef.set({username: username, password: password});  
+        });
+        
+    </script>
 	 <script src="js/foundation.min.js"></script>
 
 </body>

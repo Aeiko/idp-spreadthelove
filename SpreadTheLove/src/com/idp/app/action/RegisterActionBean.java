@@ -8,9 +8,12 @@ import com.idp.app.model.User;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
+import net.sourceforge.stripes.action.SessionScope;
 import net.sourceforge.stripes.action.UrlBinding;
+import net.sourceforge.stripes.controller.FlashScope;
 
 @UrlBinding("/register.action")
+@SessionScope
 public class RegisterActionBean extends BaseActionBean{
 	private String username;
 	private String password;
@@ -18,6 +21,8 @@ public class RegisterActionBean extends BaseActionBean{
 	private ArrayList<Message> mList;
 	
 	public Resolution register(){
+		
+		FlashScope.getCurrent(getContext().getRequest(), true).put(this);
 		user = new User();
 		user.setUsername(username);
 		user.setPassword(password);
@@ -41,11 +46,13 @@ public class RegisterActionBean extends BaseActionBean{
 		mList.add(m1);
 		mList.add(m2);
 		mList.add(m3);
+		
+		System.out.println(mList.size());
 		dao.setMessages(mList);
 		
 		getContext().setUser(user);
-		
-		return new ForwardResolution("/home.jsp");
+		getContext().getRequest().setAttribute("mList", mList);
+		return new ForwardResolution("/home.action");
 
 	}
 

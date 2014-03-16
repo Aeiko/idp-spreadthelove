@@ -8,18 +8,27 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 
 @UrlBinding("/login.action")
-public class LoginActionBean {
+public class LoginActionBean extends BaseActionBean {
 	
 	private String username;
 	private String password;
 	private User user;
 	
+	@DefaultHandler
 	public Resolution login(){
 		user = new User();
 		user.setUsername(username);
 		user.setPassword(password);
 		
-		return new ForwardResolution("/home.jsp");
+		if(username.equals("James")){
+			return new ForwardResolution("/jameslogin.jsp");
+			
+		}else{
+			
+			return new ForwardResolution("/chome.jsp");
+		}
+		
+		
 	}
 
 	public String getUsername() {

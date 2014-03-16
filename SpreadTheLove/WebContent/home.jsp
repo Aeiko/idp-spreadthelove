@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="css/custom.css" />
         <link rel="stylesheet" href="font-awesome-4.0.3/css/font-awesome.min.css">
         <script src="js/vendor/modernizr.js"></script>
+        <script src="https://cdn.firebase.com/v0/firebase.js"></script>
     </head>
     <body>
         <div class="contain-to-grid sticky" data-options="st icky_on: large">
@@ -98,6 +99,11 @@
 
         <script src="js/vendor/jquery.js"></script>
         <script src="js/foundation.min.js"></script>
+        
+        <script>
+        var dataRef = new Firebase("https://crackling-fire-5927.firebaseio.com");
+        
+        </script>
         <script>
             $(document).foundation();
         </script>
