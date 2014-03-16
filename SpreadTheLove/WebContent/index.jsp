@@ -31,6 +31,10 @@
 <script type="text/javascript" src="js/vendor/jquery.js"></script>
 <script type="text/javascript" src="js/vendor/jquery.orbit-1.3.0.js"></script>
 <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+
+<script src="js/foundation/foundation.js"></script>
+<script src="js/foundation/foundation.reveal.js"></script>
+
 <!--[if IE]>
 			     <style type="text/css">
 			         .timer { display: none !important; }
@@ -52,7 +56,9 @@
 			fluid : true
 		});
 	});
+	
 </script>
+
 
 </head>
 <body>
@@ -73,6 +79,7 @@
 			</div>
 		</div>
 	</div>
+	
 
 
 	<div class="container">
@@ -80,6 +87,17 @@
 			<div class="ten columns">
 				<h6>Where no questions are too awkward to go unanswered...</h6>
 
+				<div id="responsive">
+					<div class="content" style="">
+						<!--<h1>Orbit does content now.</h1>
+						<h3>Highlight me...I'm text.</h3>-->
+					</div>
+					<img src="img/spread the love-01.png"/> 
+					<img src="img/spread the love-02.png"/> 
+					
+				</div>
+				
+				
 				<fieldset>
 					<legend>
 						<h6>
@@ -87,7 +105,7 @@
 							here! :)
 						</h6>
 					</legend>
-
+					
 					<fieldset class="five columns" style="float: left;">
 						<legend>
 							<h6>Not a member?</h6>
@@ -124,15 +142,7 @@
 				</fieldset>
 
 
-				<div id="responsive">
-					<div class="content" style="">
-						<!--<h1>Orbit does content now.</h1>
-						<h3>Highlight me...I'm text.</h3>-->
-					</div>
-					<img src="img/spread the love-01.png" /> <img src="img/spread the love-02.png">
-					
-				</div>
-
+				
 				<fieldset>
 					<legend>
 						<h6>Recent questions asked</h6>
@@ -154,18 +164,19 @@
 							My dad buys chocolate for me everyday. Is this normal? <br>
 							<br> <br>
 						<ul class="button-group">
-							<li><a href="#" class="alert tiny radius  button"><i
-									class="fa fa-hand-o-up "></i> I Feel You</a></li>
-							<li><a href="#" class="button tiny radius "><i
+							<li><a href="#" class="alert tiny radius  button" data-reveal-id="promptModal"><i
+									class="fa fa-hand-o-up " ></i> I Feel You</a></li>
+							<li><a href="#" class="button tiny radius " data-reveal-id="promptModal"><i
 									class=" fa fa-arrow-circle-up "></i> Follow Post</a></li>
-							<li><a href="#" class="button tiny radius "><i
+							<li><a href="#" class="button tiny radius " data-reveal-id="promptModal"><i
 									class=" fa fa-comment-o "></i> View Comments</a></li>
-							<li><a href="#" class="button tiny radius "><i
+							<li><a href="#" class="button tiny radius " data-reveal-id="promptModal"><i
 									class=" fa fa-pencil "></i> Reply</a></li>
 						</ul>
 
 					</div>
-
+					
+					
 
 					<div class="panel">
 						<p>
@@ -175,13 +186,13 @@
 							too. I think I like her back as well. Am I going to hell for
 							this? :( <br> <br> <br>
 						<ul class="button-group">
-							<li><a href="#" class="alert tiny radius  button"><i
-									class="fa fa-hand-o-up "></i> I Feel You</a></li>
-							<li><a href="#" class="button tiny radius "><i
+							<li><a href="#" class="alert tiny radius  button" data-reveal-id="promptModal"><i
+									class="fa fa-hand-o-up " ></i> I Feel You</a></li>
+							<li><a href="#" class="button tiny radius " data-reveal-id="promptModal"><i
 									class=" fa fa-arrow-circle-up "></i> Follow Post</a></li>
-							<li><a href="#" class="button tiny radius "><i
+							<li><a href="#" class="button tiny radius " data-reveal-id="promptModal"><i
 									class=" fa fa-comment-o "></i> View Comments</a></li>
-							<li><a href="#" class="button tiny radius "><i
+							<li><a href="#" class="button tiny radius " data-reveal-id="promptModal"><i
 									class=" fa fa-pencil "></i> Reply</a></li>
 						</ul>
 					</div>
@@ -201,6 +212,46 @@
 			</div>
 		</div>
 	</div>
+	
+	<div id="promptModal" class="reveal-modal" data-reveal> 
+		<div class="container"> 
+			<div class="row">
+				<div class="twelve columns">
+					<fieldset class="six columns"  style="float: left;">
+						<legend>
+							<h6>Not a member?</h6>
+						</legend>
+						<s:form action="/register.action">
+							<div>
+								Username<input name="username" id="createNewUserName" type="text" placeholder="No real names!"> 
+								Password<input name="password" id="createNewUserPassword" type="password" placeholder="******">
+								<s:submit name="register" class="tiny radius button success" id="register" value="register" />
+							</div>
+						</s:form>
+					</fieldset>
+							
+					<fieldset class="six columns" style="float: center;">
+						<legend>
+							<h6>Member login</h6>
+						</legend>
+						<s:form action="/login.action">
+							<div>
+								Username<input name="username" type="text" placeholder="username"> 
+								Password<input name="password" type="password" placeholder="******">
+								<s:submit name="login" class="tiny radius button success" value="login" />
+								<a href="/SpreadTheLove/passwordReset.action">Forget Password</a>
+							</div>
+						</s:form>
+			
+					</fieldset>
+				</div>
+			</div>
+		</div>
+		
+		
+		<a class="close-reveal-modal">&#215;</a>
+		
+	</div>
 	<script>
         var dataRef = new Firebase("https://crackling-fire-5927.firebaseio.com");
         $( '#register' ).click(function() {
@@ -216,7 +267,9 @@
         });
         
     </script>
-	 <script src="js/foundation.min.js"></script>
-
+	 
+	<script type="text/javascript"> 
+	   $(document).foundation();
+	</script>
 </body>
 </html>
