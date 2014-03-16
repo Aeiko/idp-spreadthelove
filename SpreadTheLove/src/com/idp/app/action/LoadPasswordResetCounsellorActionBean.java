@@ -5,7 +5,7 @@ import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 
-@UrlBinding("/home.action")
+@UrlBinding("/passwordResetCounsellor.action")
 public class LoadPasswordResetCounsellorActionBean extends BaseActionBean{
 	@DefaultHandler
 	public Resolution view(){
