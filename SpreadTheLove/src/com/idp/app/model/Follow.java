@@ -1,8 +1,21 @@
 package com.idp.app.model;
 
-public class Follow {
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
+public class Follow extends ModelBase{
+	
+	@ManyToOne(optional = true, cascade=CascadeType.ALL)
+	@JoinColumn(name = "user", referencedColumnName = "id")
 	private User user;
+	
+	@ManyToOne(optional = true, cascade=CascadeType.ALL)
+	@JoinColumn(name = "message", referencedColumnName = "id")
 	private Message message;
+	
 	
 	public Follow(User user, Message message){
 		this.user = user;

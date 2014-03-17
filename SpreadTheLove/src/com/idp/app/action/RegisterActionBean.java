@@ -1,12 +1,8 @@
 package com.idp.app.action;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 import com.idp.app.model.Message;
 import com.idp.app.model.User;
 
-import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.SessionScope;
@@ -17,15 +13,11 @@ import net.sourceforge.stripes.action.UrlBinding;
 public class RegisterActionBean extends BaseActionBean{
 	private String username;
 	private String password;
-	private User user;
-	private ArrayList<Message> mList;
 	private String displayName;
 
 	public Resolution register(){
 		
-		Random random = new Random();
-		
-		user = new User();
+		User user = new User();
 		user.setUsername(username);
 		user.setPassword(password);
 		user.setDisplayName(displayName);
@@ -45,18 +37,16 @@ public class RegisterActionBean extends BaseActionBean{
 		m3.setTitle("My mom is a monster");
 		m3.setId(345678);
 		
-		mList = dao.getMessages();
-		mList.add(m1);
-		mList.add(m2);
-		mList.add(m3);
+		userDao.save(user);
+		userDao.commit();
 		
-		System.out.println(mList.size());
-		dao.setMessages(mList);
+		messageDao.save(m1);
+		messageDao.save(m2);
+		messageDao.save(m3);
+		messageDao.commit();
 		
 		getContext().setUser(user);
-		getContext().getRequest().setAttribute("mList", mList);
 		return new ForwardResolution("/home.action");
-
 	}
 
 	public String getUsername() {
@@ -75,22 +65,6 @@ public class RegisterActionBean extends BaseActionBean{
 		this.password = password;
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public ArrayList<Message> getmList() {
-		return mList;
-	}
-
-	public void setmList(ArrayList<Message> mList) {
-		this.mList = mList;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-	
 	public String getDisplayName() {
 		return displayName;
 	}
@@ -98,7 +72,4 @@ public class RegisterActionBean extends BaseActionBean{
 	public void setDisplayName(String displayName) {
 		this.displayName = displayName;
 	}
-
-
-
 }

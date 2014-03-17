@@ -27,11 +27,8 @@ public class PostQuestionActionBean extends BaseActionBean {
 		int id = random.nextInt(10000);
 		msg.setId(id);
 		
-		mList = dao.getMessages();
-		
-		mList.add(msg);
-		
-		dao.setMessages(mList);
+		messageDao.save(msg);
+		messageDao.commit();
 		
 		return new ForwardResolution("/home.jsp");
 	}

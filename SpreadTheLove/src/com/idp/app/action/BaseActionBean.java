@@ -1,7 +1,10 @@
 package com.idp.app.action;
 
 import com.idp.app.ext.MyActionBeanContext;
-import com.idp.app.model.Dao;
+import com.idp.app.dao.FeelDaoImpl;
+import com.idp.app.dao.FollowDaoImpl;
+import com.idp.app.dao.MessageDaoImpl;
+import com.idp.app.dao.UserDaoImpl;
 import com.idp.app.model.User;
 
 import net.sourceforge.stripes.action.ActionBean;
@@ -22,6 +25,8 @@ public abstract class BaseActionBean implements ActionBean {
         return getContext().getUser();
     }
     
-    
-    public Dao dao = new Dao();
+    public UserDaoImpl userDao = new UserDaoImpl();
+    public MessageDaoImpl messageDao = new MessageDaoImpl();
+    public FollowDaoImpl followDao = new FollowDaoImpl();
+    public FeelDaoImpl feelDao = new FeelDaoImpl();
 }
