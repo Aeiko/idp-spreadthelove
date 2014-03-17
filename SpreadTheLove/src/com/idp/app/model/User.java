@@ -28,7 +28,7 @@ public class User extends ModelBase{
 	private String username;
 	private String password;
 	private String displayName;
-	private String type;
+	private String type = "child"; // child or counsellor
 	
 	public String getUsername() {
 		return username;

@@ -16,18 +16,15 @@ public class LoginActionBean extends BaseActionBean {
 	
 	@DefaultHandler
 	public Resolution login(){
-		user = new User();
-		user.setUsername(username);
-		user.setPassword(password);
-		
-		if(username.equals("James")){
-			return new ForwardResolution("/jameslogin.jsp");
+		user = userDao.findByUsername(username);
+		getContext().setUser(user);
+		if(user.getType().equals("child")){
+			return new ForwardResolution("/home.action");
 			
 		}else{
 			
-			return new ForwardResolution("/chome.jsp");
+			return new ForwardResolution("/chome.action");
 		}
-		
 		
 	}
 

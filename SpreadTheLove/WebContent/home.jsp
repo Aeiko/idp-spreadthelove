@@ -44,9 +44,9 @@
 	                                <legend><h6>Ask a question...<i class=" fa fa-comment-o"></i> It's safe in here! :) </h6></legend>
 	                                
 	                                <s:form action="/postquestion.action">
-	                                	<input id="title" type="text" name="title" placeholder="Title of post">
-	                                	<textarea id="message" name="message" placeholder="Ask something or confide in us. We will try our best to help you."></textarea>
-	                               		<s:submit id="post" name="post" class="tiny radius button success" value="Post" />
+	                                	<input type="text" name="title" placeholder="Title of post">
+	                                	<textarea name="message" placeholder="Ask something or confide in us. We will try our best to help you."></textarea>
+	                               		<s:submit name="post" class="tiny radius button success" value="Post" />
 	                                </s:form>
 	                            </fieldset>
                                 
@@ -60,7 +60,7 @@
 									<c:if test="${actionBean.mList.size() > 0 }">
 		                                <c:forEach var="message" items="${actionBean.mList}">
 		                                	<div class="small-12 columns panel">
-		                                	#${message.getId()}
+		                                	${message.getUser().getDisplayName()}
 		                         			<p>Title: ${message.getTitle()}</p> 
 		                                	<p class="message-content">${message.getContent()}</p> 
 		                                	
@@ -85,11 +85,11 @@
                             <input tabindex="1" type="search" placeholder="Search" >
                             <button type="submit" class="tiny" id="searchbtn">Submit</button>
                             <ul class="side-nav">
-                            	<li><a href="/SpreadTheLove/activity.action"><i class="fa fa-user fa-fw"></i>My Account</a></li>
-                                <li class="active"><a href="#"><i class="fa fa-home fa-fw"></i> Home</a></li>
+                            	<li><a href="/SpreadTheLove/viewaccount.action"><i class="fa fa-user fa-fw"></i>My Account</a></li>
+                                <li class="active"><a href="/SpreadTheLove/home.action"><i class="fa fa-home fa-fw"></i> Home</a></li>
                                 <li><a href="/SpreadTheLove/activity.action"><i class="fa fa-bolt fa-fw"></i> Activity</a></li>
                                 <li><a href="/SpreadTheLove/questions.action"><i class="fa fa-lightbulb-o fa-fw" ></i> Questions I asked</a></li>
-                                <li><a href="#"><i class="fa fa-anchor fa-fw"></i> Posts I follow</a></li>
+                                <li><a href="/SpreadTheLove/postifollow.action"><i class="fa fa-anchor fa-fw"></i> Posts I follow</a></li>
                             </ul>
                         </div>
                     </div>
@@ -99,20 +99,7 @@
 
         <script src="js/vendor/jquery.js"></script>
         <script src="js/foundation.min.js"></script>
-        
-        <script>
-        var msgRef = new Firebase("https://crackling-fire-5927.firebaseio.com/users/James/messages");
-        $( '#post' ).click(function() {
-    		
-    		var title = $('#title').val();
-    		var message = $('#message').val();
-    		var id = msgRef.push().name();
-             msgRef.set({title: title, message: message, id: id}); 
-    		
-    	});
-        
-    
-        </script>
+
         <script>
             $(document).foundation();
         </script>

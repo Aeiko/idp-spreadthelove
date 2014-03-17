@@ -5,8 +5,8 @@ import java.util.List;
 import com.idp.app.model.User;
 
 public class UserDaoImpl extends BaseDaoImpl<User,Integer> {
-    public User findByEmail(String email) {
-        List<User> results = findBy("email", email);
+    public User findByUsername(String username) {
+        List<User> results = findBy("username", username);
         User foundEntity = null;
         if(!results.isEmpty()){
             // ignores multiple results

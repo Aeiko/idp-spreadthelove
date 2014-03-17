@@ -1,8 +1,10 @@
 package com.idp.app.action;
-import java.util.ArrayList;
-import java.util.Random;
+
+import java.util.Collections;
+import java.util.List;
 
 import com.idp.app.model.Message;
+import com.idp.app.model.User;
 
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
@@ -14,21 +16,21 @@ import net.sourceforge.stripes.action.UrlBinding;
 public class PostQuestionActionBean extends BaseActionBean {
 	private String message;
 	private String title;
-	private ArrayList<Message> mList;
-	
+	private List<Message> mList;
 	
 	@DefaultHandler
 	public Resolution post(){
 		
+		User user = userDao.findByUsername(getContext().getUser().getUsername());
 		Message msg = new Message();
 		msg.setContent(message);
 		msg.setTitle(title);
-		Random random = new Random();
-		int id = random.nextInt(10000);
-		msg.setId(id);
-		
+		msg.setUser(user);
 		messageDao.save(msg);
 		messageDao.commit();
+		
+		mList = messageDao.read();
+		Collections.reverse(mList);
 		
 		return new ForwardResolution("/home.jsp");
 	}
@@ -54,12 +56,14 @@ public class PostQuestionActionBean extends BaseActionBean {
 	}
 
 
-	public ArrayList<Message> getmList() {
+	public List<Message> getmList() {
 		return mList;
 	}
 
 
-	public void setmList(ArrayList<Message> mList) {
+	public void setmList(List<Message> mList) {
 		this.mList = mList;
 	}
+
+
 }

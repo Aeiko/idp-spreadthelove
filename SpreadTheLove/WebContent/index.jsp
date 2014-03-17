@@ -118,7 +118,6 @@
 								Password<input
 									name="password" id="createNewUserPassword" type="password"
 									placeholder="******">
-								<input name="displayName" type="hidden" id="displayName" value="Anonymous #1101">
 								<s:submit name="register" class="tiny radius button success" id="register"
 									value="register" />
 							</div>
@@ -253,19 +252,6 @@
 		<a class="close-reveal-modal">&#215;</a>
 		
 	</div>
-	<script>
-        var dataRef = new Firebase("https://crackling-fire-5927.firebaseio.com");
-        $( '#register' ).click(function() {
-
-            var username = $('#createNewUserName').val();
-            var password = $('#createNewUserPassword').val(); 
-            var displayName = $('#displayName').val();
-            var userRef =dataRef.child('users/'+username.toString()); 
-            
-            userRef.set({username: username, password: password, displayname: displayName});  
-        });
-        
-    </script>
 	 
 	<script type="text/javascript"> 
 	   $(document).foundation();
