@@ -29,16 +29,16 @@ public class Follow extends ModelBase{
 	}
 	
 	public void setUser(User user) {
-		//prevent endless loop
+		
 		if (sameAsFormer(user))
 			return;
-		//set new company
+		
 		User oldUser = this.user;
 		this.user = user;
-		//remove from old company
+		
 		if (oldUser != null)
 			oldUser.removeFollow(this);
-		//set myself into new company
+		
 		if (user != null)
 			user.addFollow(this);
 	}
@@ -48,16 +48,16 @@ public class Follow extends ModelBase{
 	}
 	
 	public void setMessage(Message message) {
-		//prevent endless loop
+		
 		if (sameAsFormerMessage(message))
 			return;
-		//set new company
+		
 		Message oldMessage = this.message;
 		this.message = message;
-		//remove from old company
+		
 		if (oldMessage != null)
 			oldMessage.removeFollow(this);
-		//set myself into new company
+		
 		if (message != null)
 			message.addFollow(this);
 	}

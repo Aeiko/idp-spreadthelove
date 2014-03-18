@@ -27,7 +27,7 @@
                     <!-- Right Nav Section -->
                     <ul class="right">
                         <li class="divider"></li>
-                        <li><a href="/SpreadTheLove"><i class="fa fa-power-off fa-fw"></i> Logout</a></li>
+                        <li><a href="/SpreadTheLove/logout-user.action"><i class="fa fa-power-off fa-fw"></i> Logout</a></li>
                     </ul>
                 </section>
             </nav>
@@ -63,18 +63,22 @@
 		                                	${message.getUser().getDisplayName()}
 		                         			<p>Title: ${message.getTitle()}</p> 
 		                                	<p class="message-content">${message.getContent()}</p> 
-		                                	<s:form action="/generatefollow.action" method="post" id="followForm">
+		                                	
+		                                	
+		                                	<s:form action="/generatefollow.action/" method="post" id="followForm${message.id}">
 													<input type="hidden" name="messageID" value="${message.id}"/>
 											</s:form>
-		                                	<s:form action="/generateifeelyou.action" method="post" id="ifeelyouForm">
+		                                	<s:form action="/generateifeelyou.action/" method="post" id="ifeelyouForm${message.id}">
 													<input type="hidden" name="messageID" value="${message.id}"/>
 											</s:form>
+											
+											
 		                                	<br>
 		                                	<br>
 		                                	<br>
 		                                	<ul class="button-group">
-					                            <li><a onclick="ifeelyou()" class="alert tiny radius button" id="ifeelyoubtn"><i class="fa fa-hand-o-up "></i> I Feel You</a></li>
-					                         	<li><a onclick="follow();" class="button tiny radius " id="followbtn"><i class=" fa fa-arrow-circle-up "></i> Follow Post</a></li>
+					                            <li><a onclick="ifeelyou('${message.id}')" class="alert tiny radius button" id="ifeelyoubtn${message.id}"><i class="fa fa-hand-o-up "></i> I Feel You</a></li>
+					                         	<li><a onclick="follow('${message.id}');" class="button tiny radius " id="followbtn${message.id}"><i class=" fa fa-arrow-circle-up "></i> Follow Post</a></li>
 					                            <li><a class="button tiny radius "><i class=" fa fa-comment-o "></i> View Comments</a></li>
 					                            <li><a  class="button tiny radius "><i class=" fa fa-pencil "></i> Reply</a></li>
 					                        </ul>
@@ -92,7 +96,7 @@
                                 <li class="active"><a href="/SpreadTheLove/home.action"><i class="fa fa-home fa-fw"></i> Home</a></li>
                                 <li><a href="/SpreadTheLove/activity.action"><i class="fa fa-bolt fa-fw"></i> Activity</a></li>
                                 <li><a href="/SpreadTheLove/questioniasked.action"><i class="fa fa-lightbulb-o fa-fw" ></i> Questions I asked</a></li>
-                                <li><a href="/SpreadTheLove/postifollow.action"><i class="fa fa-anchor fa-fw"></i> Posts I follow</a></li>
+                                <li><a href="/SpreadTheLove/postsifollowed.action"><i class="fa fa-anchor fa-fw"></i> Posts I follow</a></li>
                             </ul>
                         </div>
                     </div>
@@ -104,20 +108,20 @@
         <script src="js/foundation.min.js"></script>
 		
 		<script>
-			function follow(){
-				
-				$.post('/SpreadTheLove/generatefollow.action', $("#followForm").serialize(), function (data) {
+			function follow(id){
+			
+				$.post('/SpreadTheLove/generatefollow.action', $("#followForm"+id).serialize(), function (data) {
 					
                 });
-				$('#followbtn').css('color', 'black');
+				$('#followbtn'+id).css('color', 'black');
 			}
 			
-			function ifeelyou(){
+			function ifeelyou(id){
 				
-				$.post('/SpreadTheLove/generateifeelyou.action', $("#ifeelyouForm").serialize(), function (data) {
+				$.post('/SpreadTheLove/generateifeelyou.action', $("#ifeelyouForm"+id).serialize(), function (data) {
 					
                 });
-				$('#ifeelyoubtn').css('color', 'black');
+				$('#ifeelyoubtn'+id).css('color', 'black');
 			}
 		</script>
         <script>

@@ -48,12 +48,12 @@
 	                                </div>
                                 	
                                 	<legend>Recent Posts</legend>
-									<c:if test="${actionBean.myquestions.size() > 0 }">
-		                                <c:forEach var="message" items="${actionBean.followList}">
+									<c:if test="${actionBean.followList.size() > 0 }">
+		                                <c:forEach var="follow" items="${actionBean.followList}">
 		                                	<div class="small-12 columns panel">
-		                                	${message.getUser().getDisplayName()}
-		                         			<p>Title: ${message.getTitle()}</p> 
-		                                	<p class="message-content">${message.getContent()}</p> 
+		                                	${follow.getUser().getDisplayName()}
+		                         			<p>Title: ${follow.getMessage().getTitle()}</p> 
+		                                	<p class="message-content">${follow.getMessage().getContent()}</p> 
 		                                	
 		                                	
 		                                	<br>
@@ -61,7 +61,7 @@
 		                                	<br>
 		                                	<ul class="button-group">
 					                            <li><a href="#" class="alert tiny radius  button"><i class="fa fa-hand-o-up "></i> I Feel You</a></li>
-					                            <li><a href="#" class="button tiny radius "><i class=" fa fa-arrow-circle-up "></i> Follow Post</a></li>
+					                            <li><a href="#" class="button tiny radius " style="color:black"><i class=" fa fa-arrow-circle-up "></i> Follow Post</a></li>
 					                            <li><a href="#" class="button tiny radius "><i class=" fa fa-comment-o "></i> View Comments</a></li>
 					                            <li><a href="#" class="button tiny radius "><i class=" fa fa-pencil "></i> Reply</a></li>
 					                        </ul>
@@ -76,10 +76,10 @@
                             <input tabindex="1" type="search" placeholder="Search" >
                             <button type="submit" class="tiny" id="searchbtn">Submit</button>
                             <ul class="side-nav">
-                                <li class="active"><a href="/SpreadTheLove/home.action"><i class="fa fa-home fa-fw"></i> Home</a></li>
+                                <li><a href="/SpreadTheLove/home.action"><i class="fa fa-home fa-fw"></i> Home</a></li>
                                 <li><a href="/SpreadTheLove/activity.action"><i class="fa fa-bolt fa-fw"></i> Activity</a></li>
                                 <li><a href="/SpreadTheLove/questions.action"><i class="fa fa-lightbulb-o fa-fw" ></i> Questions I asked</a></li>
-                                <li><a href="/SpreadTheLove/postifollow.action"><i class="fa fa-anchor fa-fw"></i> Posts I follow</a></li>
+                                <li class="active"><a href="/SpreadTheLove/postifollow.action"><i class="fa fa-anchor fa-fw"></i> Posts I follow</a></li>
                             </ul>
                         </div>
                     </div>

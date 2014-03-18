@@ -15,6 +15,30 @@ public class GenerateIFeelYouActionBean extends BaseActionBean{
 	private User user;
 	private Message message;
 	
+	public String getMessageID() {
+		return messageID;
+	}
+
+	public void setMessageID(String messageID) {
+		this.messageID = messageID;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Message getMessage() {
+		return message;
+	}
+
+	public void setMessage(Message message) {
+		this.message = message;
+	}
+
 	@DefaultHandler
 	public void ifeelyou(){
 		
@@ -30,8 +54,9 @@ public class GenerateIFeelYouActionBean extends BaseActionBean{
 		Feel feel = new Feel(user,message);
 		System.out.println(feel.getMessage().getContent());
 		System.out.println(feel.getUser().getUsername());
-		feelDao.save(feel);
-		feelDao.commit();
+		user.addFeel(feel);
+		userDao.save(user);
+		userDao.commit();
 	}
 	
 }
