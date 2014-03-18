@@ -9,7 +9,7 @@ import net.sourceforge.stripes.action.UrlBinding;
 public class LogoutActionBean extends BaseActionBean {
 	@DefaultHandler
 	public Resolution logout(){
-		getContext().getRequest().removeAttribute("user");
-		return new RedirectResolution("/");
-	}
+		getContext().getRequest().getSession().removeAttribute("user");
+    	return new RedirectResolution("/");
+    }
 }

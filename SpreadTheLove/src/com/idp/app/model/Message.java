@@ -55,16 +55,16 @@ public class Message extends ModelBase{
 	}
 	
 	public void setUser(User user) {
-		//prevent endless loop
+		
 		if (sameAsFormer(user))
 			return;
-		//set new company
+		
 		User oldUser = this.user;
 		this.user = user;
-		//remove from old company
+		
 		if (oldUser != null)
 			oldUser.removeMessage(this);
-		//set myself into new company
+		
 		if (user != null)
 			user.addMessage(this);
 	}
@@ -97,38 +97,31 @@ public class Message extends ModelBase{
 	}
 	
 	public void addFollow(Follow follow) { 
-		//prevent endless loop
+		
 		if (follows.contains(follow))
 			return;
-		//add new cashout
+		
 		follows.add(follow);
-		//set myself into the cashout
+		
 		follow.setMessage(this);
 	}
 	public void removeFollow(Follow follow) {
-		//prevent endless loop
 		if (!follows.contains(follow))
 			return;
-		//remove the cashout
 		follows.remove(follow);
 		//remove myself from the cashout
 		follow.setMessage(null);
 	}
 	
-	public void addFeel(Feel feel) { 
-		//prevent endless loop
+	public void addFeel(Feel feel) {
 		if (feels.contains(feel))
 			return;
-		//add new cashout
 		feels.add(feel);
-		//set myself into the cashout
 		feel.setMessage(this);
 	}
 	public void removeFeel(Feel feel) {
-		//prevent endless loop
 		if (!feels.contains(feel))
 			return;
-		//remove the cashout
 		feels.remove(feel);
 		//remove myself from the cashout
 		feel.setMessage(null);
@@ -152,6 +145,4 @@ public class Message extends ModelBase{
 		//remove myself from the cashout
 		message.setParentMessage(null);
 	}
-	
-	
 }

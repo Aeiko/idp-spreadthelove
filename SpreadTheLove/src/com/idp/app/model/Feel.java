@@ -24,13 +24,46 @@ public class Feel extends ModelBase{
 	public User getUser() {
 		return user;
 	}
+
 	public void setUser(User user) {
+		
+		if (sameAsFormer(user))
+			return;
+		
+		User oldUser = this.user;
 		this.user = user;
+		
+		if (oldUser != null)
+			oldUser.removeFeel(this);
+		
+		if (user != null)
+			user.addFeel(this);
 	}
+	
 	public Message getMessage() {
 		return message;
 	}
+	
 	public void setMessage(Message message) {
+		
+		if (sameAsFormerMessage(message))
+			return;
+		
+		Message oldMessage = this.message;
 		this.message = message;
+		
+		if (oldMessage != null)
+			oldMessage.removeFeel(this);
+		
+		if (message != null)
+			message.addFeel(this);
+	}
+	
+	private boolean sameAsFormer(User newUser){
+		return user == null? newUser == null : user.equals(newUser);
+	}
+	
+	private boolean sameAsFormerMessage(Message newMessage){
+		return message == null? newMessage == null : message.equals(newMessage);
 	}
 }

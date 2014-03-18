@@ -1,6 +1,7 @@
 package com.idp.app.action;
 
 import com.idp.app.ext.MyActionBeanContext;
+import com.idp.app.dao.ActivityDaoImpl;
 import com.idp.app.dao.FeelDaoImpl;
 import com.idp.app.dao.FollowDaoImpl;
 import com.idp.app.dao.MessageDaoImpl;
@@ -29,4 +30,5 @@ public abstract class BaseActionBean implements ActionBean {
     public MessageDaoImpl messageDao = new MessageDaoImpl();
     public FollowDaoImpl followDao = new FollowDaoImpl();
     public FeelDaoImpl feelDao = new FeelDaoImpl();
+    public ActivityDaoImpl activityDao = new ActivityDaoImpl();
 }

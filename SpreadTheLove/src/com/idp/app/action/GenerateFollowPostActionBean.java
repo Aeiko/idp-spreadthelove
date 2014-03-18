@@ -1,7 +1,9 @@
 package com.idp.app.action;
 
+
 import java.util.List;
 
+import com.idp.app.model.Activity;
 import com.idp.app.model.Follow;
 import com.idp.app.model.Message;
 import com.idp.app.model.User;
@@ -25,8 +27,12 @@ public class GenerateFollowPostActionBean extends BaseActionBean {
 		
 		if (!hasFollowed(messageID)){
 			Follow follow = new Follow(user,message);
-		
+
 			user.addFollow(follow);
+			Activity activity = new Activity();
+			activity.setDescription("You have started following "+user.getDisplayName()+"'s post on '"+message.getTitle()+"'.");
+			user.addActivity(activity);
+
 		} else {
 			List<Follow> follows = followDao.read();
 			for(Follow f: follows){
@@ -35,9 +41,13 @@ public class GenerateFollowPostActionBean extends BaseActionBean {
 					user.removeFollow(f);
 					message.removeFollow(f);
 					followDao.delete(f);
+					Activity activity = new Activity();
+					activity.setDescription("You have stopped following "+user.getDisplayName()+"'s post on '"+message.getTitle()+"'.");
+					user.addActivity(activity);
 				}
 			}
 		}
+
 		userDao.save(user);
 		userDao.commit();
 	}

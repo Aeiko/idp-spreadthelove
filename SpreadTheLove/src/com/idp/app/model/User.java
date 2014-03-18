@@ -25,6 +25,10 @@ public class User extends ModelBase{
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Feel> feels = new ArrayList<Feel>();
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="user")
+	@Fetch(value = FetchMode.SUBSELECT)
+	private List<Activity> activities = new ArrayList<Activity>();
+	
 	private String username;
 	private String password;
 	private String displayName;
@@ -56,62 +60,83 @@ public class User extends ModelBase{
 	}
 	
 	public void addFollow(Follow follow) { 
-		//prevent endless loop
+		
 		if (follows.contains(follow))
 			return;
-		//add new cashout
+		
 		follows.add(follow);
-		//set myself into the cashout
+		
 		follow.setUser(this);
 	}
 	public void removeFollow(Follow follow) {
-		//prevent endless loop
+		
 		if (!follows.contains(follow))
 			return;
-		//remove the cashout
+		
 		follows.remove(follow);
-		//remove myself from the cashout
+		
 		follow.setUser(null);
 	}
 	
 	public void addFeel(Feel feel) { 
-		//prevent endless loop
+		
 		if (feels.contains(feel))
 			return;
-		//add new cashout
+		
 		feels.add(feel);
-		//set myself into the cashout
+		
 		feel.setUser(this);
 	}
 	
 	public void removeFeel(Feel feel) {
-		//prevent endless loop
+		
 		if (!feels.contains(feel))
 			return;
-		//remove the cashout
+		
 		feels.remove(feel);
-		//remove myself from the cashout
+		
 		feel.setUser(null);
 	}
 	
 	public void addMessage(Message message) { 
-		//prevent endless loop
+		
 		if (messages.contains(message))
 			return;
-		//add new cashout
+		
 		messages.add(message);
-		//set myself into the cashout
+		
 		message.setUser(this);
 	}
 	
 	public void removeMessage(Message message) {
-		//prevent endless loop
+		
 		if (!messages.contains(message))
 			return;
-		//remove the cashout
+		
 		messages.remove(message);
-		//remove myself from the cashout
+	
 		message.setUser(null);
 	}
+	
+	public void addActivity(Activity activity) { 
+		
+		if (activities.contains(activity))
+			return;
+		
+		activities.add(activity);
+		
+		activity.setUser(this);
+	}
+	
+	public void removeActivity(Activity activity) {
+		
+		if (!activities.contains(activity))
+			return;
+		
+		activities.remove(activity);
+	
+		activity.setUser(null);
+	}
+
 
 }
