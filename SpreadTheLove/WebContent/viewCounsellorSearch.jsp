@@ -68,7 +68,7 @@
 		<div class="container panel-3">
 			<div class="row">
 				<div class="small-6 columns text-left">
-					Spread The Love > Counsellor > <b>Home</b>
+					Spread The Love > Counsellor > <b>Search Results for "${actionBean.search }"</b>
 				</div>
 				<div class="small-6 columns text-right">
 					
@@ -81,10 +81,10 @@
 						<button class="tiny radius " data-sort-value="number">Popular</button>
 					</div>
 				</div>		
-				
 				<!-- Post Listing -->
 				<div class="small-9 columns">
 					<div class="row" id="container">
+						
 						<c:forEach var="message" items="${actionBean.messages}">
 						<div class="item">
 							<div class="small-12 columns panel-1">
@@ -97,7 +97,6 @@
 									</div>
 									<div class="small-2 columns">
 										<h6 class="question">${actionBean.getFollows(message.id) } <i class="fa fa-star"></i></h6>
-										<p class="number hide">${actionBean.getFollows(message.id) }</p>
 									</div>
 									<div class="small-5 columns">
 										<s:form action="/generatefollow.action" method="post" id="followForm_${message.id}">
@@ -143,7 +142,7 @@
 	                    <input tabindex="1" class="commentarea" name="search" type="search" placeholder="Search" />
                     </form>
                     <ul class="side-nav">
-                    	<li class="active"><a href="/SpreadTheLove/counsellor/home.action"><i class="fa fa-home fa-fw"></i> Home</a></li>
+                    	<li><a href="/SpreadTheLove/counsellor/home.action"><i class="fa fa-home fa-fw"></i> Home</a></li>
                     	<li><a href="/SpreadTheLove/counsellor/pending.action"><i class="fa fa-ellipsis-h fa-fw"></i> Pending</a></li>
                         <li><a href="/SpreadTheLove/activity.action"><i class="fa fa-bolt fa-fw"></i> Activity</a></li>
                         <li><a href="/SpreadTheLove/counsellor/answered.action"><i class="fa fa-lightbulb-o fa-fw" ></i> Questions I answered</a></li>

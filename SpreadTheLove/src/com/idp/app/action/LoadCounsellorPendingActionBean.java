@@ -14,8 +14,8 @@ import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 
-@UrlBinding("/counsellor/home.action")
-public class LoadCounsellorHomeActionBean extends BaseActionBean{
+@UrlBinding("/counsellor/pending.action")
+public class LoadCounsellorPendingActionBean extends BaseActionBean{
 	private List<Message> messages;
 	
 	@DefaultHandler
@@ -25,11 +25,13 @@ public class LoadCounsellorHomeActionBean extends BaseActionBean{
 		List<Message> newList = new ArrayList<Message>();
 		for(Message m: messages){
 			if (!m.getUser().getType().equals("counsellor")){
-				newList.add(m);
+				if ((getAnswer(m.getId()+"")) == null){
+					newList.add(m);
+				}
 			}
 		}
 		messages = newList;
-		return new ForwardResolution("/viewCounsellorHome.jsp");
+		return new ForwardResolution("/viewPending.jsp");
 	}
 	
 	public Message getAnswer(String messageId){

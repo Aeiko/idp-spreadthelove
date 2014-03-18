@@ -27,7 +27,14 @@ public class Message extends ModelBase{
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Feel> feels = new ArrayList<Feel>();
 	
-
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="parentMessage")
+	@Fetch(value = FetchMode.SUBSELECT)
+	private List<Message> comments = new ArrayList<Message>();
+	
+	@ManyToOne(optional = true, cascade=CascadeType.ALL)
+	@JoinColumn(name = "parentMessage", referencedColumnName = "id")
+	private Message parentMessage;
+	
 	private String title;
 	private String content;
 	
@@ -62,8 +69,31 @@ public class Message extends ModelBase{
 			user.addMessage(this);
 	}
 	
+	public Message getParentMessage() {
+		return parentMessage;
+	}
+	
+	public void setParentMessage(Message message) {
+		//prevent endless loop
+		if (sameAsFormerMessage(message))
+			return;
+		//set new company
+		Message oldParentMessage = this.parentMessage;
+		this.parentMessage = message;
+		//remove from old company
+		if (oldParentMessage != null)
+			oldParentMessage.removeComment(this);
+		//set myself into new company
+		if (message != null)
+			message.addComment(this);
+	}
+	
 	private boolean sameAsFormer(User newUser){
 		return user == null? newUser == null : user.equals(newUser);
+	}
+	
+	private boolean sameAsFormerMessage(Message newMessage){
+		return parentMessage == null? newMessage == null : parentMessage.equals(newMessage);
 	}
 	
 	public void addFollow(Follow follow) { 
@@ -82,7 +112,7 @@ public class Message extends ModelBase{
 		//remove the cashout
 		follows.remove(follow);
 		//remove myself from the cashout
-		follow.setUser(null);
+		follow.setMessage(null);
 	}
 	
 	public void addFeel(Feel feel) { 
@@ -101,6 +131,27 @@ public class Message extends ModelBase{
 		//remove the cashout
 		feels.remove(feel);
 		//remove myself from the cashout
-		feel.setUser(null);
+		feel.setMessage(null);
 	}
+	
+	public void addComment(Message message) { 
+		//prevent endless loop
+		if (comments.contains(message))
+			return;
+		//add new cashout
+		comments.add(message);
+		//set myself into the cashout
+		message.setParentMessage(this);
+	}
+	public void removeComment(Message message) {
+		//prevent endless loop
+		if (!comments.contains(message))
+			return;
+		//remove the cashout
+		comments.remove(message);
+		//remove myself from the cashout
+		message.setParentMessage(null);
+	}
+	
+	
 }

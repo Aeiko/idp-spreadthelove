@@ -1,5 +1,7 @@
 package com.idp.app.action;
 
+import java.util.List;
+
 import com.idp.app.model.Follow;
 import com.idp.app.model.Message;
 import com.idp.app.model.User;
@@ -17,24 +19,40 @@ public class GenerateFollowPostActionBean extends BaseActionBean {
 	@DefaultHandler
 	public void follow(){
 		
-		System.out.println("hello!");
 		user = userDao.findByUsername(getContext().getUser().getUsername());
 		
-		System.out.println(user.getUsername());
-		
-		System.out.println(messageID);
 		message = messageDao.findById(messageID);
-		System.out.println(message.getContent());
 		
-		Follow follow = new Follow(user,message);
-		System.out.println(follow.getMessage().getContent());
-		System.out.println("themessage is"+follow.getMessage().getId());
+		if (!hasFollowed(messageID)){
+			Follow follow = new Follow(user,message);
 		
-		user.addFollow(follow);
-		System.out.println(follow.getUser().getUsername());
+			user.addFollow(follow);
+		} else {
+			List<Follow> follows = followDao.read();
+			for(Follow f: follows){
+				if (f.getUser().getId().equals(user.getId())
+						&& f.getMessage().getId() == Integer.parseInt(messageID)){
+					user.removeFollow(f);
+					message.removeFollow(f);
+					followDao.delete(f);
+				}
+			}
+		}
 		userDao.save(user);
 		userDao.commit();
+	}
+	
+	public boolean hasFollowed(String messageId) {
+		User user = getContext().getUser();
 		
+		List<Follow> follows = followDao.read();
+		for(Follow f: follows){
+			if (f.getUser().getId().equals(user.getId())
+					&& f.getMessage().getId() == Integer.parseInt(messageId)){
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public User getUser() {

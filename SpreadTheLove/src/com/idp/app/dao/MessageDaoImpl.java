@@ -13,7 +13,6 @@ public class MessageDaoImpl extends BaseDaoImpl<Message,Integer> {
 	}
 	
 	public Message findById(String id){
-		
 		List<Message> results = findBy("id",Integer.parseInt(id));
 		Message foundEntity = null;
         if(!results.isEmpty()){
@@ -21,5 +20,5 @@ public class MessageDaoImpl extends BaseDaoImpl<Message,Integer> {
             foundEntity = (Message) results.get(0);
         }
         return foundEntity;
-	} 
+	}
 }

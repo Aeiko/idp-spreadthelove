@@ -14,8 +14,8 @@ import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 
-@UrlBinding("/counsellor/home.action")
-public class LoadCounsellorHomeActionBean extends BaseActionBean{
+@UrlBinding("/counsellor/answered.action")
+public class LoadCounsellorAnsweredActionBean extends BaseActionBean{
 	private List<Message> messages;
 	
 	@DefaultHandler
@@ -25,13 +25,17 @@ public class LoadCounsellorHomeActionBean extends BaseActionBean{
 		List<Message> newList = new ArrayList<Message>();
 		for(Message m: messages){
 			if (!m.getUser().getType().equals("counsellor")){
-				newList.add(m);
+				if ((getAnswer(m.getId()+"")) != null){
+					if ((getAnswer(m.getId()+"")).getUser().getId().equals(getContext().getUser().getId())){
+						newList.add(m);
+					}
+				}
 			}
 		}
 		messages = newList;
-		return new ForwardResolution("/viewCounsellorHome.jsp");
+		return new ForwardResolution("/viewCounsellorAnswered.jsp");
 	}
-	
+
 	public Message getAnswer(String messageId){
 		List<Message> results = messageDao.read();
 		Message foundEntity = null;
