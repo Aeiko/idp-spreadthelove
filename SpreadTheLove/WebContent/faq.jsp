@@ -10,9 +10,36 @@
         <title>Spread the love</title>
         <link rel="stylesheet" href="css/foundation.css" />
         <link rel="stylesheet" href="css/custom.css" />
+        <link rel="stylesheet" href="css/orbit-1.3.0.css">
+		
+<link
+	href='http://fonts.googleapis.com/css?family=Covered+By+Your+Grace'
+	rel='stylesheet' type='text/css'>        
+        <link rel="stylesheet"
+	href="font-awesome-4.0.3/css/font-awesome.min.css">
+        
         <link rel="stylesheet" href="font-awesome-4.0.3/css/font-awesome.min.css">
         <script src="js/vendor/modernizr.js"></script>
         <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+		
+		<script type="text/javascript" src="js/vendor/jquery.js"></script>
+		<script type="text/javascript" src="js/vendor/jquery.orbit-1.3.0.js"></script> 
+		
+		<script type="text/javascript">
+			$(window).load(function() {
+				$('#featured').orbit({
+					bullets : true
+				});
+				$('#featured2').orbit({
+					bullets : true
+				});
+				$('#responsive').orbit({
+					bullets : true,
+					fluid : true
+				});
+			});
+	
+</script>       
     </head>
     <body>
         <div class="contain-to-grid sticky" data-options="st icky_on: large">
@@ -40,47 +67,43 @@
                         <div class="small-8 columns">
                             <br>
                             <div class="row">           
-                                <fieldset>
-	                                <legend><h6>Ask a question...<i class=" fa fa-comment-o"></i> It's safe in here! :) </h6></legend>
-	                                
-	                                <s:form action="/postquestion.action">
-	                                	<input type="text" name="title" placeholder="Title of post">
-	                                	<textarea name="message" placeholder="Ask something or confide in us. We will try our best to help you."></textarea>
-	                               		<s:submit name="post" class="tiny radius button success" value="Post" />
-	                                </s:form>
-	                            </fieldset>
                                 
                                 <fieldset>
+                               		<legend>Frequently Asked Questions</legend>
                                 	
-                                	<div class="small-12 columns text-left">
-	                                    <h4><small><b>Sort by: &nbsp;</b><button class="tiny round secondary"><i class="fa fa-fw fa-rocket"></i> Popular</button> <button class="tiny round secondary"><i class="fa fa-clock-o fa-fw"></i> Recent</button></small></h4>  
-	                                </div>
+                                	<h5><strong>1. What can I do in this website?</strong></h5>
+                                	<h6>You can post any questions anonymously, and any registered user will be able to answer your questions! :) </h6>
+                                	<h6>Refer to the following.</h6>
                                 	
-                                	<legend>Recent Posts</legend>
-									<c:if test="${actionBean.mList.size() > 0 }">
-		                                <c:forEach var="message" items="${actionBean.mList}">
-		                                	<div class="small-12 columns panel">
-		                                	${message.getUser().getDisplayName()}
-		                         			<p>Title: ${message.getTitle()}</p> 
-		                                	<p class="message-content">${message.getContent()}</p> 
-		                                	<s:form action="/generatefollow.action" method="post" id="followForm">
-													<input type="hidden" name="messageID" value="${message.id}"/>
-											</s:form>
-		                                	<s:form action="/generateifeelyou.action" method="post" id="ifeelyouForm">
-													<input type="hidden" name="messageID" value="${message.id}"/>
-											</s:form>
-		                                	<br>
-		                                	<br>
-		                                	<br>
-		                                	<ul class="button-group">
-					                            <li><a onclick="ifeelyou()" class="alert tiny radius button" id="ifeelyoubtn"><i class="fa fa-hand-o-up "></i> I Feel You</a></li>
-					                         	<li><a onclick="follow();" class="button tiny radius " id="followbtn"><i class=" fa fa-arrow-circle-up "></i> Follow Post</a></li>
-					                            <li><a class="button tiny radius "><i class=" fa fa-comment-o "></i> View Comments</a></li>
-					                            <li><a  class="button tiny radius "><i class=" fa fa-pencil "></i> Reply</a></li>
-					                        </ul>
-					                        </div>
-		                                </c:forEach>
-	                                </c:if>	 
+                                		<div id="responsive">
+											<div class="content" style="">
+												<!--<h1>Orbit does content now.</h1>
+												<h3>Highlight me...I'm text.</h3>-->
+											</div>
+											<img src="img/spread the love-01.png"/> 
+											<img src="img/spread the love-02.png"/> 
+											<img src="img/spread the love-03.png"/> 
+											
+											
+										</div>
+                                	
+                                	<br>
+                                	
+                                	<h5><strong>2. How many questions can I ask?</strong></h5>
+                                	<h6>There is no limit as to how many questions you can ask. If you are in doubt or having something that is bothering you, feel free to post your question on Spread the love! :)</h6>
+                                	<br>
+                                	
+                                	<h5><strong>3. I have posted my question but I have yet to see any replies. What is happening?</strong></h5>
+									<h6>We are currently increasing our manpower but rest assured that our counsellors are trying their best to answer all questions that you have asked :) </h6>                                	
+                                	<br>
+                                	
+                                	<h5><strong>4. Will my friends find out that I am the one asking the questions?</strong></h5>
+                                	<h6>Your identity will remain absolutely anonymous when post anything on Spread The Love. However, do take note not to disclose any personal details such as your name or address when create the posts.</h6>
+                                	<br>
+                                	
+                                	<h5><strong>5. What is the <i>I Feel You</i> function about?</strong></h5>
+                                	<h6>You can click <i>I Feel You</i> on an individual post to show that you feels the same as the person who created this post. </h6>
+                               
                                 </fieldset>
                             </div>
                         </div>
@@ -103,8 +126,7 @@
             </div>
         </div>
 
-        <script src="js/vendor/jquery.js"></script>
-        <script src="js/foundation.min.js"></script>
+     
 		
 		<script>
 			function follow(){

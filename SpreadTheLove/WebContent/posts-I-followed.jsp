@@ -40,16 +40,7 @@
                         <div class="small-8 columns">
                             <br>
                             <div class="row">           
-                                <fieldset>
-	                                <legend><h6>Ask a question...<i class=" fa fa-comment-o"></i> It's safe in here! :) </h6></legend>
-	                                
-	                                <s:form action="/postquestion.action">
-	                                	<input type="text" name="title" placeholder="Title of post">
-	                                	<textarea name="message" placeholder="Ask something or confide in us. We will try our best to help you."></textarea>
-	                               		<s:submit name="post" class="tiny radius button success" value="Post" />
-	                                </s:form>
-	                            </fieldset>
-                                
+                              
                                 <fieldset>
                                 	
                                 	<div class="small-12 columns text-left">
@@ -57,26 +48,22 @@
 	                                </div>
                                 	
                                 	<legend>Recent Posts</legend>
-									<c:if test="${actionBean.mList.size() > 0 }">
-		                                <c:forEach var="message" items="${actionBean.mList}">
+									<c:if test="${actionBean.myquestions.size() > 0 }">
+		                                <c:forEach var="message" items="${actionBean.followList}">
 		                                	<div class="small-12 columns panel">
 		                                	${message.getUser().getDisplayName()}
 		                         			<p>Title: ${message.getTitle()}</p> 
 		                                	<p class="message-content">${message.getContent()}</p> 
-		                                	<s:form action="/generatefollow.action" method="post" id="followForm">
-													<input type="hidden" name="messageID" value="${message.id}"/>
-											</s:form>
-		                                	<s:form action="/generateifeelyou.action" method="post" id="ifeelyouForm">
-													<input type="hidden" name="messageID" value="${message.id}"/>
-											</s:form>
+		                                	
+		                                	
 		                                	<br>
 		                                	<br>
 		                                	<br>
 		                                	<ul class="button-group">
-					                            <li><a onclick="ifeelyou()" class="alert tiny radius button" id="ifeelyoubtn"><i class="fa fa-hand-o-up "></i> I Feel You</a></li>
-					                         	<li><a onclick="follow();" class="button tiny radius " id="followbtn"><i class=" fa fa-arrow-circle-up "></i> Follow Post</a></li>
-					                            <li><a class="button tiny radius "><i class=" fa fa-comment-o "></i> View Comments</a></li>
-					                            <li><a  class="button tiny radius "><i class=" fa fa-pencil "></i> Reply</a></li>
+					                            <li><a href="#" class="alert tiny radius  button"><i class="fa fa-hand-o-up "></i> I Feel You</a></li>
+					                            <li><a href="#" class="button tiny radius "><i class=" fa fa-arrow-circle-up "></i> Follow Post</a></li>
+					                            <li><a href="#" class="button tiny radius "><i class=" fa fa-comment-o "></i> View Comments</a></li>
+					                            <li><a href="#" class="button tiny radius "><i class=" fa fa-pencil "></i> Reply</a></li>
 					                        </ul>
 					                        </div>
 		                                </c:forEach>
@@ -91,11 +78,8 @@
                             <ul class="side-nav">
                                 <li class="active"><a href="/SpreadTheLove/home.action"><i class="fa fa-home fa-fw"></i> Home</a></li>
                                 <li><a href="/SpreadTheLove/activity.action"><i class="fa fa-bolt fa-fw"></i> Activity</a></li>
-                                <li><a href="/SpreadTheLove/questioniasked.action"><i class="fa fa-lightbulb-o fa-fw" ></i> Questions I asked</a></li>
+                                <li><a href="/SpreadTheLove/questions.action"><i class="fa fa-lightbulb-o fa-fw" ></i> Questions I asked</a></li>
                                 <li><a href="/SpreadTheLove/postifollow.action"><i class="fa fa-anchor fa-fw"></i> Posts I follow</a></li>
-                                <li><a href="/SpreadTheLove/accountsettings.action"><i class="fa fa-user fa-fw"></i> Account Settings</a></li>
-                                <li><a href="/SpreadTheLove/faq.action"><i class="fa fa-bars fa-fw"></i> FAQ</a></li>
-                                
                             </ul>
                         </div>
                     </div>
@@ -105,27 +89,10 @@
 
         <script src="js/vendor/jquery.js"></script>
         <script src="js/foundation.min.js"></script>
-		
-		<script>
-			function follow(){
-				
-				$.post('/SpreadTheLove/generatefollow.action', $("#followForm").serialize(), function (data) {
-					
-                });
-				$('#followbtn').css('color', 'black');
-			}
-			
-			function ifeelyou(){
-				
-				$.post('/SpreadTheLove/generateifeelyou.action', $("#ifeelyouForm").serialize(), function (data) {
-					
-                });
-				$('#ifeelyoubtn').css('color', 'black');
-			}
-		</script>
+
         <script>
             $(document).foundation();
         </script>
-		
+
     </body>
 </html>
