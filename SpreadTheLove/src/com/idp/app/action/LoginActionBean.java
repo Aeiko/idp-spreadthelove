@@ -19,13 +19,10 @@ public class LoginActionBean extends BaseActionBean {
 		user = userDao.findByUsername(username);
 		getContext().setUser(user);
 		if(user.getType().equals("child")){
-			return new ForwardResolution("/home.action");
-			
-		}else{
-			
-			return new ForwardResolution("/chome.action");
+			return new ForwardResolution("/home.action");	
+		} else {
+			return new ForwardResolution("/counsellor/home.action");
 		}
-		
 	}
 
 	public String getUsername() {
