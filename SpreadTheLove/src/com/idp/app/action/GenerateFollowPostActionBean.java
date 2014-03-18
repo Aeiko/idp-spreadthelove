@@ -1,5 +1,6 @@
 package com.idp.app.action;
 
+import com.idp.app.model.Activity;
 import com.idp.app.model.Follow;
 import com.idp.app.model.Message;
 import com.idp.app.model.User;
@@ -31,6 +32,10 @@ public class GenerateFollowPostActionBean extends BaseActionBean {
 		System.out.println("themessage is"+follow.getMessage().getId());
 		
 		user.addFollow(follow);
+		
+		Activity activity = new Activity();
+		activity.setDescription("You have started following "+user.getDisplayName()+"'s post on '"+message.getTitle()+"'.");
+		user.addActivity(activity);
 		System.out.println(follow.getUser().getUsername());
 		userDao.save(user);
 		userDao.commit();

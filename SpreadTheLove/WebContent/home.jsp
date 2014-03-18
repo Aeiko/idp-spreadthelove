@@ -68,6 +68,7 @@
 		                                	<s:form action="/generatefollow.action/" method="post" id="followForm${message.id}">
 													<input type="hidden" name="messageID" value="${message.id}"/>
 											</s:form>
+											
 		                                	<s:form action="/generateifeelyou.action/" method="post" id="ifeelyouForm${message.id}">
 													<input type="hidden" name="messageID" value="${message.id}"/>
 											</s:form>
@@ -77,7 +78,7 @@
 		                                	<br>
 		                                	<br>
 		                                	<ul class="button-group">
-					                            <li><a onclick="ifeelyou('${message.id}')" class="alert tiny radius button" id="ifeelyoubtn${message.id}"><i class="fa fa-hand-o-up "></i> I Feel You</a></li>
+					                            <li><a onclick="ifeelyou('${message.id}');" class="alert tiny radius button" id="ifeelyoubtn${message.id}"><i class="fa fa-hand-o-up "></i> I Feel You</a></li>
 					                         	<li><a onclick="follow('${message.id}');" class="button tiny radius " id="followbtn${message.id}"><i class=" fa fa-arrow-circle-up "></i> Follow Post</a></li>
 					                            <li><a class="button tiny radius "><i class=" fa fa-comment-o "></i> View Comments</a></li>
 					                            <li><a  class="button tiny radius "><i class=" fa fa-pencil "></i> Reply</a></li>
@@ -97,7 +98,6 @@
                                 <li><a href="/SpreadTheLove/activity.action"><i class="fa fa-bolt fa-fw"></i> Activity</a></li>
                                 <li><a href="/SpreadTheLove/questioniasked.action"><i class="fa fa-lightbulb-o fa-fw" ></i> Questions I asked</a></li>
                                 <li><a href="/SpreadTheLove/postsifollowed.action"><i class="fa fa-anchor fa-fw"></i> Posts I follow</a></li>
-                                <li><a href="/SpreadTheLove/postifollow.action"><i class="fa fa-anchor fa-fw"></i> Posts I follow</a></li>
                                 <li><a href="/SpreadTheLove/accountsettings.action"><i class="fa fa-user fa-fw"></i> Account Settings</a></li>
                                 <li><a href="/SpreadTheLove/faq.action"><i class="fa fa-bars fa-fw"></i> FAQ</a></li>
                             </ul>

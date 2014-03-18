@@ -1,5 +1,7 @@
 package com.idp.app.action;
 
+import com.idp.app.model.User;
+
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;

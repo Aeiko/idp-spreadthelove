@@ -1,5 +1,6 @@
 package com.idp.app.action;
 
+import com.idp.app.model.Activity;
 import com.idp.app.model.Feel;
 import com.idp.app.model.Follow;
 import com.idp.app.model.Message;
@@ -55,6 +56,11 @@ public class GenerateIFeelYouActionBean extends BaseActionBean{
 		System.out.println(feel.getMessage().getContent());
 		System.out.println(feel.getUser().getUsername());
 		user.addFeel(feel);
+		
+		Activity activity = new Activity();
+		activity.setDescription("You have felt "+user.getDisplayName()+"'s post on '"+message.getTitle()+"'.");
+		user.addActivity(activity);
+		
 		userDao.save(user);
 		userDao.commit();
 	}

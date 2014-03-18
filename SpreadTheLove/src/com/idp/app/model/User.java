@@ -25,6 +25,10 @@ public class User extends ModelBase{
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Feel> feels = new ArrayList<Feel>();
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="user")
+	@Fetch(value = FetchMode.SUBSELECT)
+	private List<Activity> activities = new ArrayList<Activity>();
+	
 	private String username;
 	private String password;
 	private String displayName;
@@ -113,5 +117,26 @@ public class User extends ModelBase{
 	
 		message.setUser(null);
 	}
+	
+	public void addActivity(Activity activity) { 
+		
+		if (activities.contains(activity))
+			return;
+		
+		activities.add(activity);
+		
+		activity.setUser(this);
+	}
+	
+	public void removeActivity(Activity activity) {
+		
+		if (!activities.contains(activity))
+			return;
+		
+		activities.remove(activity);
+	
+		activity.setUser(null);
+	}
+
 
 }
