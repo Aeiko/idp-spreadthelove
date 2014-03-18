@@ -1,6 +1,7 @@
 package com.idp.app.action;
 
 
+import java.util.Collections;
 import java.util.List;
 
 import com.idp.app.model.Message;
@@ -26,7 +27,7 @@ public class LoadHomeActionBean extends BaseActionBean{
 	@DefaultHandler
 	public Resolution view(){
 		mList = messageDao.read();
-
+		Collections.reverse(mList);
 		return new ForwardResolution("/home.jsp");
 	}
 }

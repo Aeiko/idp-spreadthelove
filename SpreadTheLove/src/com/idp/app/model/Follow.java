@@ -16,6 +16,7 @@ public class Follow extends ModelBase{
 	@JoinColumn(name = "message", referencedColumnName = "id")
 	private Message message;
 	
+	public Follow(){}
 	
 	public Follow(User user, Message message){
 		this.user = user;

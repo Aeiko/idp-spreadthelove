@@ -43,6 +43,14 @@ public abstract class BaseDaoImpl<T,ID extends Serializable>
     }
     
     @SuppressWarnings("unchecked")
+ 	public List<T> read(String columnName,User user) {
+         return Stripersist.getEntityManager()
+             .createQuery("SELECT a FROM " +entityClass.getName() +" a WHERE a."+columnName+" = :columnName")
+             .setParameter("columnName", user)
+             .getResultList();
+    }
+    
+    @SuppressWarnings("unchecked")
 	public List<String> read(String columnName) {
         return Stripersist.getEntityManager()
             .createQuery("SELECT " +columnName+" FROM " +entityClass.getName())
