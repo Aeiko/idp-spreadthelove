@@ -94,6 +94,8 @@
 					</div>
 					<img src="img/spread the love-01.png"/> 
 					<img src="img/spread the love-02.png"/> 
+					<img src="img/spread the love-03.png"/> 
+					
 					
 				</div>
 				

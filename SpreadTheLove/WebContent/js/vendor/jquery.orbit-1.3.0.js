@@ -13,7 +13,7 @@
     
     defaults: {  
       animation: 'horizontal-push', 		// fade, horizontal-slide, vertical-slide, horizontal-push, vertical-push
-      animationSpeed: 600, 				// how fast animtions are
+      animationSpeed: 500, 				// how fast animtions are
       timer: true, 						// true or false to have the timer
       advanceSpeed: 4000, 				// if timer is enabled, time between transitions 
       pauseOnHover: false, 				// if you hover pauses the slider
