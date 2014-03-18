@@ -28,9 +28,12 @@ public class GenerateFollowPostActionBean extends BaseActionBean {
 		
 		Follow follow = new Follow(user,message);
 		System.out.println(follow.getMessage().getContent());
+		System.out.println("themessage is"+follow.getMessage().getId());
+		
+		user.addFollow(follow);
 		System.out.println(follow.getUser().getUsername());
-		followDao.save(follow);
-		followDao.commit();
+		userDao.save(user);
+		userDao.commit();
 		
 	}
 

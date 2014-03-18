@@ -30,25 +30,6 @@ public class User extends ModelBase{
 	private String displayName;
 	private String type = "child"; // child or counsellor
     
-	public List<Message> getMessages() {
-		return messages;
-	}
-	public void setMessages(List<Message> messages) {
-		this.messages = messages;
-	}
-	public List<Follow> getFollows() {
-		return follows;
-	}
-	public void setFollows(List<Follow> follows) {
-		this.follows = follows;
-	}
-	public List<Feel> getFeels() {
-		return feels;
-	}
-	public void setFeels(List<Feel> feels) {
-		this.feels = feels;
-	}
-	
 	public String getUsername() {
 		return username;
 	}
@@ -111,6 +92,26 @@ public class User extends ModelBase{
 		feels.remove(feel);
 		//remove myself from the cashout
 		feel.setUser(null);
+	}
+	
+	public void addMessage(Message message) { 
+		//prevent endless loop
+		if (messages.contains(message))
+			return;
+		//add new cashout
+		messages.add(message);
+		//set myself into the cashout
+		message.setUser(this);
+	}
+	
+	public void removeMessage(Message message) {
+		//prevent endless loop
+		if (!messages.contains(message))
+			return;
+		//remove the cashout
+		messages.remove(message);
+		//remove myself from the cashout
+		message.setUser(null);
 	}
 
 }
