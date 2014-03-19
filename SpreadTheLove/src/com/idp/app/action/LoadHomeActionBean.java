@@ -1,6 +1,7 @@
 package com.idp.app.action;
 
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -14,20 +15,46 @@ import net.sourceforge.stripes.action.UrlBinding;
 @UrlBinding("/home.action")
 public class LoadHomeActionBean extends BaseActionBean{
 
-	private List<Message> mList;
+	private List<Message> messages;
 
-	public List<Message> getmList() {
-		return mList;
-	}
 
-	public void setmList(List<Message> mList) {
-		this.mList = mList;
-	}
 	
+	public List<Message> getMessages() {
+		return messages;
+	}
+
+	public void setMessages(List<Message> messages) {
+		this.messages = messages;
+	}
+
 	@DefaultHandler
 	public Resolution view(){
-		mList = messageDao.read();
-		Collections.reverse(mList);
+		messages = messageDao.read();
+		Collections.reverse(messages);
+		
+		List<Message> newList = new ArrayList<Message>();
+		for(Message m: messages){
+			if (!m.getUser().getType().equals("counsellor")){
+				newList.add(m);
+			}
+		}
+		messages = newList;
 		return new ForwardResolution("/home.jsp");
+	}
+	
+	public Message getAnswer(String messageId){
+		List<Message> results = messageDao.read();
+		Message foundEntity = null;
+		
+		for(Message m: results){
+			if (m.getParentMessage() != null) {
+				if (m.getParentMessage().getId() == Integer.parseInt(messageId)
+						&& m.getUser().getType().equals("counsellor")){
+					foundEntity = m;
+					break;
+				}
+			}
+		}
+        return foundEntity;
 	}
 }

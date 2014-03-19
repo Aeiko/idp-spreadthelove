@@ -57,8 +57,8 @@
 	                                </div>
                                 	
                                 	<legend>Recent Posts</legend>
-									<c:if test="${actionBean.mList.size() > 0 }">
-		                                <c:forEach var="message" items="${actionBean.mList}">
+									<c:if test="${actionBean.messages.size() > 0 }">
+		                                <c:forEach var="message" items="${actionBean.messages}">
 		                                	<div class="small-12 columns panel">
 		                                	${message.getUser().getDisplayName()}
 		                         			<p>Title: ${message.getTitle()}</p> 
@@ -84,6 +84,16 @@
 					                            <li><a  class="button tiny radius "><i class=" fa fa-pencil "></i> Reply</a></li>
 					                        </ul>
 					                        </div>
+					                        
+					                        <c:if test="${not empty actionBean.getAnswer(message.id) }">
+												<c:set var="answer" value="${actionBean.getAnswer(message.id)}"/>
+												<div class="small-12 columns panel-2">
+													<h4><small><b><i class="fa fa-check"></i> &nbsp;Answered by Counsellor ${answer.user.displayName }</b></small></h4>
+													<p class="answer">${answer.content }</p>
+													<hr>
+												</div>
+											</c:if>
+					                        
 		                                </c:forEach>
 	                                </c:if>	 
                                 </fieldset>

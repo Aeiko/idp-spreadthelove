@@ -48,24 +48,43 @@
 	                                </div>
                                 	
                                 	<legend>Recent Posts</legend>
-									<c:if test="${actionBean.followList.size() > 0 }">
-		                                <c:forEach var="follow" items="${actionBean.followList}">
+									<c:if test="${actionBean.messages.size() > 0 }">
+		                                <c:forEach var="message" items="${actionBean.messages}">
 		                                	<div class="small-12 columns panel">
-		                                	${follow.getUser().getDisplayName()}
-		                         			<p>Title: ${follow.getMessage().getTitle()}</p> 
-		                                	<p class="message-content">${follow.getMessage().getContent()}</p> 
+		                                	${message.getUser().getDisplayName()}
+		                         			<p>Title: ${message.getTitle()}</p> 
+		                                	<p class="message-content">${message.getContent()}</p> 
 		                                	
 		                                	
+		                                	<s:form action="/generatefollow.action/" method="post" id="followForm${message.id}">
+													<input type="hidden" name="messageID" value="${message.id}"/>
+											</s:form>
+											
+		                                	<s:form action="/generateifeelyou.action/" method="post" id="ifeelyouForm${message.id}">
+													<input type="hidden" name="messageID" value="${message.id}"/>
+											</s:form>
+											
+											
 		                                	<br>
 		                                	<br>
 		                                	<br>
 		                                	<ul class="button-group">
-					                            <li><a href="#" class="alert tiny radius  button"><i class="fa fa-hand-o-up "></i> I Feel You</a></li>
-					                            <li><a href="#" class="button tiny radius " style="color:black"><i class=" fa fa-arrow-circle-up "></i> Follow Post</a></li>
-					                            <li><a href="#" class="button tiny radius "><i class=" fa fa-comment-o "></i> View Comments</a></li>
-					                            <li><a href="#" class="button tiny radius "><i class=" fa fa-pencil "></i> Reply</a></li>
+					                            <li><a onclick="ifeelyou('${message.id}');" class="alert tiny radius button" id="ifeelyoubtn${message.id}"><i class="fa fa-hand-o-up "></i> I Feel You</a></li>
+					                         	<li><a onclick="follow('${message.id}');" class="button tiny radius " id="followbtn${message.id}"><i class=" fa fa-arrow-circle-up "></i> Follow Post</a></li>
+					                            <li><a class="button tiny radius "><i class=" fa fa-comment-o "></i> View Comments</a></li>
+					                            <li><a  class="button tiny radius "><i class=" fa fa-pencil "></i> Reply</a></li>
 					                        </ul>
 					                        </div>
+					                        
+					                        <c:if test="${not empty actionBean.getAnswer(message.id) }">
+												<c:set var="answer" value="${actionBean.getAnswer(message.id)}"/>
+												<div class="small-12 columns panel-2">
+													<h4><small><b><i class="fa fa-check"></i> &nbsp;Answered by Counsellor ${answer.user.displayName }</b></small></h4>
+													<p class="answer">${answer.content }</p>
+													<hr>
+												</div>
+											</c:if>
+					                        
 		                                </c:forEach>
 	                                </c:if>	 
                                 </fieldset>
