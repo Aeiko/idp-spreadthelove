@@ -79,7 +79,7 @@
 					                        <c:if test="${not empty actionBean.getAnswer(message.id) }">
 												<c:set var="answer" value="${actionBean.getAnswer(message.id)}"/>
 												<div class="small-12 columns panel-2">
-													<h4><small><b><i class="fa fa-check"></i> &nbsp;Answered by Counsellor ${answer.user.displayName }</b></small></h4>
+													<h4><small data-reveal-id="promptModal"><b><i class="fa fa-check"></i> &nbsp;Answered by Counsellor ${answer.user.displayName }</b></small></h4>
 													<p class="answer">${answer.content }</p>
 													<hr>
 												</div>
@@ -107,7 +107,24 @@
                 </div>
             </div>
         </div>
-
+		
+		<div id="promptModal" class="reveal-modal" data-reveal> 
+			<div class="container"> 
+				<div class="row">
+						<fieldset class="six columns"  style="float: left;">
+							<img src="img/counsellorprofile.png"/>
+				
+						</fieldset>
+					</div>
+				</div>
+			</div>
+			
+			
+			<a class="close-reveal-modal">&#215;</a>
+			
+		</div>
+		
+		
         <script src="js/vendor/jquery.js"></script>
         <script src="js/foundation.min.js"></script>
 
