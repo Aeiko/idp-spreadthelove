@@ -11,7 +11,10 @@
         <link rel="stylesheet" href="/SpreadTheLove/css/foundation.css" />
         <link rel="stylesheet" href="/SpreadTheLove/css/custom.css" />
         <link rel="stylesheet" href="/SpreadTheLove/font-awesome-4.0.3/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/SpreadTheLove/css/orbit-1.3.0.css">
         <script src="/SpreadTheLove/js/vendor/modernizr.js"></script>
+        
+        
         <style>
 	        .panel-1 {
 	        	color: #fff !important;
@@ -68,7 +71,7 @@
 		<div class="container panel-3">
 			<div class="row">
 				<div class="small-6 columns text-left">
-					Spread The Love > Counsellor > <b>Home</b>
+					Spread The Love > Counsellor > <b>FAQ</b>
 				</div>
 				<div class="small-6 columns text-right">
 					
@@ -81,62 +84,56 @@
 						<button class="tiny radius " data-sort-value="number">Popular</button>
 					</div>
 				</div>		
+				<!-- FAQ Information -->
+				<div class="container">
+            <div class="row">
+                <div class="small-12 columns">
+                    <div class="row">
+                        <!-- Posts Listing -->
+                        <div class="small-8 columns">
+                            <br>
+                            <div class="row">           
+                                
+                                <fieldset>
+                               		<legend>Frequently Asked Questions</legend>
+                                	
+                                	<h5><strong>1. What can I do in this website?</strong></h5>
+                                	<h6>You can post any questions anonymously, and any registered user will be able to answer your questions! :) </h6>
+                                	<h6>Refer to the following.</h6>
+                                	
+                                		<div id="responsive">
+											<div class="content" style="">
+												<!--<h1>Orbit does content now.</h1>
+												<h3>Highlight me...I'm text.</h3>-->
+											</div>
+											<img src="/SpreadTheLove/img/spread the love-01.png"/> 
+											<img src="/SpreadTheLove/img/spread the love-02.png"/> 
+											<img src="/SpreadTheLove/img/spread the love-03.png"/> 
+											
+											
+										</div>
+                                	
+                                	<br>
+                                	
+                                	<h5><strong>2. How many questions can I ask?</strong></h5>
+                                	<h6>There is no limit as to how many questions you can ask. If you are in doubt or having something that is bothering you, feel free to post your question on Spread the love! :)</h6>
+                                	<br>
+                                	
+                                	<h5><strong>3. I have posted my question but I have yet to see any replies. What is happening?</strong></h5>
+									<h6>We are currently increasing our manpower but rest assured that our counsellors are trying their best to answer all questions that you have asked :) </h6>                                	
+                                	<br>
+                                	
+                                	<h5><strong>4. Will my friends find out that I am the one asking the questions?</strong></h5>
+                                	<h6>Your identity will remain absolutely anonymous when post anything on Spread The Love. However, do take note not to disclose any personal details such as your name or address when create the posts.</h6>
+                                	<br>
+                                	
+                                	<h5><strong>5. What is the <i>I Feel You</i> function about?</strong></h5>
+                                	<h6>You can click <i>I Feel You</i> on an individual post to show that you feels the same as the person who created this post. </h6>
+                               
+                                </fieldset>
+                            </div>
+                        </div>
 				
-				<!-- Post Listing -->
-				<div class="small-9 columns">
-					<div class="row" id="container">
-						<c:forEach var="message" items="${actionBean.messages}">
-						<div class="item">
-							<div class="small-12 columns panel-1">
-								<h4><small class="white"><b><i class="fa fa-user"></i> &nbsp;${message.user.displayName }</b></small></h4>
-								<p class="question">${message.content }</p>
-								<!-- Buttons -->
-								<div class="row">
-									<div class="small-2 columns">
-										<h6 class="question">${actionBean.getFeels(message.id)} <i class="fa fa-hand-o-up"></i></h6>
-									</div>
-									<div class="small-2 columns">
-										<h6 class="question">${actionBean.getFollows(message.id) } <i class="fa fa-star"></i></h6>
-										<p class="number hide">${actionBean.getFollows(message.id) }</p>
-									</div>
-									<div class="small-5 columns">
-										<s:form action="/generatefollow.action" method="post" id="followForm_${message.id}">
-											<input type="hidden" name="messageID" value="${message.id}"/>
-										</s:form>
-									</div>
-									<div class="small-3 columns text-right">
-										
-										<c:choose>
-											<c:when test="${actionBean.hasFollowed(message.id)}">
-												<button id="followbtn_${message.id}" onclick="follow(${message.id});" class="tiny secondary radius highlight" style="background: #fff"><i class="fa fa-star"></i> <b>Follow</b></button>
-											</c:when>
-											<c:otherwise>
-												<button id="followbtn_${message.id}" onclick="follow(${message.id});" class="tiny secondary radius" style="background: #fff"><i class="fa fa-star"></i> <b>Follow</b></button>	
-											</c:otherwise>
-										</c:choose>
-									</div>
-								</div>
-							</div>
-								<c:if test="${not empty actionBean.getAnswer(message.id) }">
-									<c:set var="answer" value="${actionBean.getAnswer(message.id)}"/>
-									<div class="small-12 columns panel-2">
-										<h4><small><b><i class="fa fa-check"></i> &nbsp;Answered by Counsellor ${answer.user.displayName }</b></small></h4>
-										<p class="answer">${answer.content }</p>
-										<hr>
-									</div>
-								</c:if>
-							<div class="small-12 columns panel-2 reply">
-								<h4><small><i class="fa fa-reply"></i> &nbsp;Leave a reply, ${actionBean.context.user.displayName }</small></h4>
-								<form action="/SpreadTheLove/counsellor/reply.action" style="margin-bottom: 0rem">
-									<input type="hidden" name="parentMessageId" value="${message.id }"/>
-									<textarea class="commentarea" name="content" style="min-height: 75px"></textarea>
-								</form>
-							</div>
-							<br>
-						</div>
-						</c:forEach>
-					</div>
-				</div>
 				<!-- Side Bar Nav -->
                 <div class="small-3 columns sidebar" style="min-height: 300px">
                     <form action="/SpreadTheLove/counsellor/search.action">
@@ -159,6 +156,24 @@
 		<script src="/SpreadTheLove/js/vendor/jquery.js"></script>
 	    <script src="/SpreadTheLove/js/foundation.min.js"></script>
 	    <script src="/SpreadTheLove/js/isotope.pkgd.min.js"></script>
+	    <script type="text/javascript" src="/SpreadTheLove/js/vendor/jquery.orbit-1.3.0.js"></script> 
+		
+		<script type="text/javascript">
+			$(window).load(function() {
+				$('#featured').orbit({
+					bullets : true
+				});
+				$('#featured2').orbit({
+					bullets : true
+				});
+				$('#responsive').orbit({
+					bullets : true,
+					fluid : true
+				});
+			});
+	
+		</script> 
+	    
 	    <script>
 			var $container = $('#container');
 			// init
