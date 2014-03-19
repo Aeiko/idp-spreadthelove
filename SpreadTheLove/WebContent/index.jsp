@@ -88,17 +88,10 @@
 				<h6>Where no questions are too awkward to go unanswered...</h6>
 
 				<div id="responsive">
-					<div class="content" style="">
-						<!--<h1>Orbit does content now.</h1>
-						<h3>Highlight me...I'm text.</h3>-->
-					</div>
 					<img src="img/spread the love-01.png"/> 
 					<img src="img/spread the love-02.png"/> 
-					<img src="img/spread the love-03.png"/> 
-					
-					
+					<img src="img/spread the love-03.png"/>
 				</div>
-				
 				
 				<fieldset>
 					<legend>

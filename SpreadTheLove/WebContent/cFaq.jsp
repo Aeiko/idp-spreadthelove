@@ -45,7 +45,7 @@
 	            background: linear-gradient(135deg,  #10727e 0%,#fadcbf 100%); /* W3C */
 	            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#10727e', endColorstr='#fadcbf',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
    			}
-   			h6 {
+   			h6,h4 {
    				color: #fff;
    			}
    			.white {
@@ -78,61 +78,33 @@
 				</div>
 			</div>	
 			<div class="row" style="padding-top: 20px;">
-				<div class="small-12 columns">
-					<div id="sorts" class="button-group">
-						<button class="tiny radius success" data-sort-value="random">Recent</button>
-						<button class="tiny radius " data-sort-value="number">Popular</button>
+				<div class="small-9 columns panel-1">
+					<br>
+                   	<h4><b>Frequently Asked Questions</b></h4>
+                    	
+                    <h6><strong>1. What can I do in this website?</strong></h6>
+                    <p>You can post any questions anonymously, and any registered user will be able to answer your questions! :) </hp>
+                   	<p>Refer to the following,</p>
+                    <div id="responsive">
+						<img src="/SpreadTheLove/img/spread the love-01.png"/> 
+						<img src="/SpreadTheLove/img/spread the love-02.png"/> 
+						<img src="/SpreadTheLove/img/spread the love-03.png"/> 
 					</div>
-				</div>		
-				<!-- FAQ Information -->
-				<div class="container">
-            <div class="row">
-                <div class="small-12 columns">
-                    <div class="row">
-                        <!-- Posts Listing -->
-                        <div class="small-8 columns">
-                            <br>
-                            <div class="row">           
-                                
-                                <fieldset>
-                               		<legend>Frequently Asked Questions</legend>
-                                	
-                                	<h5><strong>1. What can I do in this website?</strong></h5>
-                                	<h6>You can post any questions anonymously, and any registered user will be able to answer your questions! :) </h6>
-                                	<h6>Refer to the following.</h6>
-                                	
-                                		<div id="responsive">
-											<div class="content" style="">
-												<!--<h1>Orbit does content now.</h1>
-												<h3>Highlight me...I'm text.</h3>-->
-											</div>
-											<img src="/SpreadTheLove/img/spread the love-01.png"/> 
-											<img src="/SpreadTheLove/img/spread the love-02.png"/> 
-											<img src="/SpreadTheLove/img/spread the love-03.png"/> 
-											
-											
-										</div>
-                                	
-                                	<br>
-                                	
-                                	<h5><strong>2. How many questions can I ask?</strong></h5>
-                                	<h6>There is no limit as to how many questions you can ask. If you are in doubt or having something that is bothering you, feel free to post your question on Spread the love! :)</h6>
-                                	<br>
-                                	
-                                	<h5><strong>3. I have posted my question but I have yet to see any replies. What is happening?</strong></h5>
-									<h6>We are currently increasing our manpower but rest assured that our counsellors are trying their best to answer all questions that you have asked :) </h6>                                	
-                                	<br>
-                                	
-                                	<h5><strong>4. Will my friends find out that I am the one asking the questions?</strong></h5>
-                                	<h6>Your identity will remain absolutely anonymous when post anything on Spread The Love. However, do take note not to disclose any personal details such as your name or address when create the posts.</h6>
-                                	<br>
-                                	
-                                	<h5><strong>5. What is the <i>I Feel You</i> function about?</strong></h5>
-                                	<h6>You can click <i>I Feel You</i> on an individual post to show that you feels the same as the person who created this post. </h6>
-                               
-                                </fieldset>
-                            </div>
-                        </div>
+                   	<hr>
+                   	<h6><strong>2. How many questions can I ask?</strong></h6>
+                   	<p>There is no limit as to how many questions you can ask. If you are in doubt or having something that is bothering you, feel free to post your question on Spread the love! :)</p>
+                   	<hr>
+                   	<h6><strong>3. I have posted my question but I have yet to see any replies. What is happening?</strong></h6>
+					<p>We are currently increasing our manpower but rest assured that our counsellors are trying their best to answer all questions that you have asked :) </p>                                	
+                   	<hr>
+                   	<h6><strong>4. Will my friends find out that I am the one asking the questions?</strong></h6>
+                   	<p>Your identity will remain absolutely anonymous when post anything on Spread The Love. However, do take note not to disclose any personal details such as your name or address when create the posts.</p>
+                   	<hr>
+                   	<h6><strong>5. What is the <i>I Feel You</i> function about?</strong></h6>
+                   	<p>You can click <i>I Feel You</i> on an individual post to show that you feels the same as the person who created this post. </p>
+                   	<hr>
+                   	<br><br><br><br><br><br>
+				</div>
 				
 				<!-- Side Bar Nav -->
                 <div class="small-3 columns sidebar" style="min-height: 300px">
