@@ -16,6 +16,8 @@ public class Feel extends ModelBase{
 	@JoinColumn(name = "message", referencedColumnName = "id")
 	private Message message;
 	
+	public Feel(){}
+	
 	public Feel(User user, Message message){
 		this.user = user;
 		this.message = message;

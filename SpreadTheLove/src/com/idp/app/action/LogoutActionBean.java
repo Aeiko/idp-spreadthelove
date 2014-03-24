@@ -10,6 +10,6 @@ public class LogoutActionBean extends BaseActionBean {
 	@DefaultHandler
 	public Resolution logout(){
 		getContext().getRequest().getSession().removeAttribute("user");
-    	return new RedirectResolution("/root.action");
+    	return new RedirectResolution("/index.action");
     }
 }
