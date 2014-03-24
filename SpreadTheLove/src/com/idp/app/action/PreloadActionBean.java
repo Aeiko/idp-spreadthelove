@@ -67,7 +67,7 @@ public class PreloadActionBean extends BaseActionBean {
 		
 		messageDao.commit();
 		
-		return new ForwardResolution("/index.jsp");
+		return new ForwardResolution("/root.action");
 	}
 	
 }
