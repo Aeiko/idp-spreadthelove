@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.idp.app.model.Feel;
+import com.idp.app.model.Follow;
 import com.idp.app.model.Message;
+import com.idp.app.model.User;
 
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
@@ -14,32 +17,33 @@ import net.sourceforge.stripes.action.UrlBinding;
 @UrlBinding("/questioniasked.action")
 public class LoadQuestionsIAskedActionBean extends BaseActionBean {
 	
-	private List<Message> myquestions; 
+	private List<Message> messages; 
 	
 	@DefaultHandler
 	public Resolution myquestions(){
 		
-		myquestions = messageDao.getMessagesByUser(getContext().getUser());
-		Collections.reverse(myquestions);
+		messages = messageDao.getMessagesByUser(getContext().getUser());
+		Collections.reverse(messages);
 		
 		List<Message> newList = new ArrayList<Message>();
-		for(Message m: myquestions){
+		for(Message m: messages){
 			if (!m.getUser().getType().equals("counsellor")){
 				newList.add(m);
 			}
 		}
-		myquestions = newList;
+		messages = newList;
 		
 		return new ForwardResolution("/questions-I-asked.jsp");
 	}
 
-	public List<Message> getMyquestions() {
-		return myquestions;
+	public List<Message> getMessages() {
+		return messages;
 	}
 
-	public void setMyquestions(List<Message> myquestions) {
-		this.myquestions = myquestions;
-	}	
+	public void setMessages(List<Message> messages) {
+		this.messages = messages;
+	}
+
 	
 	public Message getAnswer(String messageId){
 		List<Message> results = messageDao.read();
@@ -55,5 +59,58 @@ public class LoadQuestionsIAskedActionBean extends BaseActionBean {
 			}
 		}
         return foundEntity;
+	}
+	
+	public boolean hasFollowed(String messageId) {
+		User user = getContext().getUser();
+		
+		List<Follow> follows = followDao.read();
+		for(Follow f: follows){
+			if (f.getUser() != null){
+				if (f.getUser().getId().equals(user.getId())
+						&& f.getMessage().getId() == Integer.parseInt(messageId)){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	public boolean hasFelt(String messageId) {
+		User user = getContext().getUser();
+		
+		List<Feel> feels = feelDao.read();
+		for(Feel f: feels){
+			if (f.getUser() != null){
+				if (f.getUser().getId().equals(user.getId())
+						&& f.getMessage().getId() == Integer.parseInt(messageId)){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	
+	public int getFeels(String messageId){
+		int num = 0;
+		List<Feel> feels = feelDao.read();
+		for(Feel f: feels){
+			if (f.getMessage().getId() == Integer.parseInt(messageId)){
+				num++;
+			}
+		}
+		return num;
+	}
+	
+	public int getFollows(String messageId){
+		int num = 0;
+		List<Follow> follows = followDao.read();
+		for(Follow f: follows){
+			if (f.getMessage().getId() == Integer.parseInt(messageId)){
+				num++;
+			}
+		}
+		return num;
 	}
 }

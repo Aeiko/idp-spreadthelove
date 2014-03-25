@@ -21,7 +21,6 @@ public class LoadRootActionBean extends BaseActionBean{
 		
 		messages = messageDao.read();
 		Collections.reverse(messages);
-		System.out.println("root");
 		List<Message> newList = new ArrayList<Message>();
 		for(Message m: messages){
 			if (!m.getUser().getType().equals("counsellor")){

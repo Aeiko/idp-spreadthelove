@@ -175,9 +175,9 @@
 		                                	<br>
 		                                	<br>
 		                                	<ul class="button-group">
-					                            <li><a onclick="ifeelyou('${message.id}');" class="alert tiny radius button" id="ifeelyoubtn${message.id}"><i class="fa fa-hand-o-up "></i> I Feel You</a></li>
-					                         	<li><a onclick="follow('${message.id}');" class="button tiny radius " id="followbtn${message.id}"><i class=" fa fa-arrow-circle-up "></i> Follow Post</a></li>
-					                            <li><a  class="button tiny radius "><i class=" fa fa-pencil "></i> Reply</a></li>
+					                            <li><a href="#" class="alert tiny radius button" id="ifeelyoubtn${message.id}"  data-reveal-id="promptModal">><i class="fa fa-hand-o-up "></i> I Feel You</a></li>
+					                         	<li><a href="#" class="button tiny radius " id="followbtn${message.id}" data-reveal-id="promptModal"><i class=" fa fa-arrow-circle-up "></i> Follow Post</a></li>
+					                            <li><a href="#"  class="button tiny radius "><i class=" fa fa-pencil " data-reveal-id="promptModal">></i> Reply</a></li>
 					                        </ul>
 					                        </div>
 					                        
