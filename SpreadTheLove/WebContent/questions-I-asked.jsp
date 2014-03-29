@@ -105,20 +105,7 @@ h6 {
 			
 			<!-- Post Listing -->
 			<div class="small-9 columns">
-				<h6>
-					Hi ${actionBean.context.user.displayName }!<br> Ask a question...<i class=" fa fa-comment-o"></i> It's safe in
-					here! :)
-				</h6>
-			
 
-				<s:form action="/postquestion.action">
-					<input type="text" name="title" placeholder="Title of post">
-					<textarea name="message"
-						placeholder="Ask something or confide in us. We will try our best to help you."></textarea>
-					<s:submit name="post" class="tiny radius button success"
-						value="Post" />
-				</s:form>
-				
 				<div id="sorts" class="button-group">
 					<button class="tiny radius success" data-sort-value="random">Recent</button>
 					<button class="tiny radius " data-sort-value="number">Popular</button>
@@ -156,39 +143,7 @@ h6 {
 											<input type="hidden" name="messageID" value="${message.id}" />
 										</s:form>
 									</div>
-									<div class="small-7 columns text-right">
-										<c:choose>
-											<c:when test="${actionBean.hasFelt(message.id)}">
-												<button id="feelbtn_${message.id}"
-													onclick="feel(${message.id});"
-													class="tiny secondary radius highlight"
-													style="background: #fff">
-													<i class="fa fa-hand-o-up"></i> <b>I feel you</b>
-												</button>
-											</c:when>
-											<c:otherwise>
-												<button id="feelbtn_${message.id}" onclick="feel(${message.id});" class="tiny secondary radius" style="background: #fff">
-													<i class="fa fa-hand-o-up"></i> <b>I feel you</b>
-												</button>
-											</c:otherwise>
-										</c:choose>
-										<c:choose>
-											<c:when test="${actionBean.hasFollowed(message.id)}">
-												<button id="followbtn_${message.id}"
-													onclick="follow(${message.id});"
-													class="tiny secondary radius highlight"
-													style="background: #fff">
-													<i class="fa fa-star"></i> <b>Follow</b>
-												</button>
-											</c:when>
-											<c:otherwise>
-												<button id="followbtn_${message.id}" onclick="follow(${message.id});" class="tiny secondary radius" style="background: #fff">
-													<i class="fa fa-star"></i> <b>Follow</b>
-												</button>
-											</c:otherwise>
-										</c:choose>
-										
-									</div>
+									
 								</div>
 							</div>
 							<c:if test="${not empty actionBean.getAnswer(message.id) }">

@@ -86,10 +86,10 @@
 				<div class="small-9 columns">
 					<div class="row" id="container">
 						<c:forEach var="message" items="${actionBean.messages}">
-						<div class="item">
+						<div class="item" >
 							<div class="small-12 columns panel-1">
 								<h4><small class="white"><b><i class="fa fa-user"></i> &nbsp;${message.user.displayName }</b></small></h4>
-								<p class="question">${message.content }</p>
+								<p class="question" onclick="indivPost(${message.id});">${message.content }</p>
 								<!-- Buttons -->
 								<div class="row">
 									<div class="small-2 columns">
@@ -102,6 +102,10 @@
 									<div class="small-5 columns">
 										<s:form action="/generatefollow.action" method="post" id="followForm_${message.id}">
 											<input type="hidden" name="messageID" value="${message.id}"/>
+										</s:form>
+										<s:form action="/individualpost.action" method="post"
+											id="indivPost_${message.id}">
+											<input type="hidden" name="messageID" value="${message.id}" />
 										</s:form>
 									</div>
 									<div class="small-3 columns text-right">
@@ -180,6 +184,11 @@
 			    });
 				$('#followbtn_' + messageId ).toggleClass("highlight");
 			}
+		    function indivPost(messageId){
+		    	var form = document.getElementById("indivPost_"+messageId);
+		    	form.submit();
+			}
+		    
 		    $(document).ready(function() {
 		        $('.commentarea').keydown(function(event) {
 		            if (event.keyCode == 13) {

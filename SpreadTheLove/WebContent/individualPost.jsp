@@ -105,46 +105,26 @@ h6 {
 			
 			<!-- Post Listing -->
 			<div class="small-9 columns">
-				<h6>
-					Hi ${actionBean.context.user.displayName }!<br> Ask a question...<i class=" fa fa-comment-o"></i> It's safe in
-					here! :)
-				</h6>
-			
-
-				<s:form action="/postquestion.action">
-					<input type="text" name="title" placeholder="Title of post">
-					<textarea name="message"
-						placeholder="Ask something or confide in us. We will try our best to help you."></textarea>
-					<s:submit name="post" class="tiny radius button success"
-						value="Post" />
-				</s:form>
-				
-				<div id="sorts" class="button-group">
-					<button class="tiny radius success" data-sort-value="random">Recent</button>
-					<button class="tiny radius " data-sort-value="number">Popular</button>
-				</div>
-				
 				<div class="row" id="container">
-					<c:forEach var="message" items="${actionBean.messages}">
-						<div class="item" >
-							<div class="small-11 columns panel-1" style="width:700px;" >
+						<div class="item">
+							<div class="small-11 columns panel-1" style="width:700px;">
 								<h4>
-									<small class="white"><b><i class="fa fa-user" ></i>
-											&nbsp;${message.user.displayName }</b></small>
+									<small class="white"><b><i class="fa fa-user"></i>
+											&nbsp;${actionBean.message.user.displayName }</b></small>
 								</h4>
-								<p class="question" onclick="indivPost(${message.id});">${message.content }</p>
+								<p class="question">${actionBean.message.content }</p>
 								<!-- Buttons -->
 								<div class="row">
 									<div class="small-2 columns">
-										<h6 class="question">${actionBean.getFeels(message.id)}
+										<h6 class="question">${actionBean.getFeels(actionBean.message.id)}
 											<i class="fa fa-hand-o-up"></i>
 										</h6>
 									</div>
 									<div class="small-2 columns">
-										<h6 class="question">${actionBean.getFollows(message.id) }
+										<h6 class="question">${actionBean.getFollows(actionBean.message.id) }
 											<i class="fa fa-star"></i>
 										</h6>
-										<p class="number hide">${actionBean.getFollows(message.id) }</p>
+										<p class="number hide">${actionBean.getFollows(actionBean.message.id) }</p>
 									</div>
 									<div class="small-1 columns">
 										<s:form action="/generatefollow.action" method="post"
@@ -155,15 +135,10 @@ h6 {
 											id="feelForm_${message.id}">
 											<input type="hidden" name="messageID" value="${message.id}" />
 										</s:form>
-										<s:form action="/individualpost.action" method="post"
-											id="indivPost_${message.id}">
-											<input type="hidden" name="messageID" value="${message.id}" />
-										</s:form>
-										
 									</div>
 									<div class="small-7 columns text-right">
 										<c:choose>
-											<c:when test="${actionBean.hasFelt(message.id)}">
+											<c:when test="${actionBean.hasFelt(actionBean.message.id)}">
 												<button id="feelbtn_${message.id}"
 													onclick="feel(${message.id});"
 													class="tiny secondary radius highlight"
@@ -178,7 +153,7 @@ h6 {
 											</c:otherwise>
 										</c:choose>
 										<c:choose>
-											<c:when test="${actionBean.hasFollowed(message.id)}">
+											<c:when test="${actionBean.hasFollowed(actionBean.message.id)}">
 												<button id="followbtn_${message.id}"
 													onclick="follow(${message.id});"
 													class="tiny secondary radius highlight"
@@ -223,7 +198,6 @@ h6 {
 							</div>
 							<br>
 						</div>
-					</c:forEach>
 				</div>
 			</div>
 			<!-- Side Bar Nav -->
@@ -282,11 +256,6 @@ h6 {
 			    });
 				$('#feelbtn_' + messageId ).toggleClass("highlight");
 			}
-		    function indivPost(messageId){
-		    	var form = document.getElementById("indivPost_"+messageId);
-		    	form.submit();
-			}
-		    
 		    $(document).ready(function() {
 		        $('.commentarea').keydown(function(event) {
 		            if (event.keyCode == 13) {

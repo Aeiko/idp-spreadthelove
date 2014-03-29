@@ -105,19 +105,7 @@ h6 {
 			
 			<!-- Post Listing -->
 			<div class="small-9 columns">
-				<h6>
-					Hi ${actionBean.context.user.displayName }!<br> Ask a question...<i class=" fa fa-comment-o"></i> It's safe in
-					here! :)
-				</h6>
-			
-
-				<s:form action="/postquestion.action">
-					<input type="text" name="title" placeholder="Title of post">
-					<textarea name="message"
-						placeholder="Ask something or confide in us. We will try our best to help you."></textarea>
-					<s:submit name="post" class="tiny radius button success"
-						value="Post" />
-				</s:form>
+				
 				
 				<div id="sorts" class="button-group">
 					<button class="tiny radius success" data-sort-value="random">Recent</button>
