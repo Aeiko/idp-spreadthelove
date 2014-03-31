@@ -200,28 +200,21 @@ h6 {
 			</div>
 			<!-- Side Bar Nav -->
 			<div class="small-3 columns sidebar" style="min-height: 300px">
-				<form action="/SpreadTheLove/counsellor/search.action">
-					<input tabindex="1" class="commentarea" name="search" type="search"
-						placeholder="Search" />
-				</form>
-				<ul class="side-nav">
-					<li class="active"><a href="/SpreadTheLove/home.action"><i
-							class="fa fa-home fa-fw"></i> Home</a></li>
-					<li><a href="/SpreadTheLove/activity.action"><i
-							class="fa fa-bolt fa-fw"></i> Activity</a></li>
-					<li><a href="/SpreadTheLove/questioniasked.action"><i
-							class="fa fa-lightbulb-o fa-fw"></i> Questions I asked</a></li>
-					<li><a href="/SpreadTheLove/postsifollowed.action"><i
-							class="fa fa-star fa-fw"></i> Posts I followed </a></li>
-					<hr>
-					<li><a href="/SpreadTheLove/accountsettings.action"><i
-							class="fa fa-fw fa-gears"></i> Account Settings</a></li>
-					<li><a href="/SpreadTheLove/faq.action"><i
-							class="fa fa-question fa-fw"></i> Help</a></li>
-					<li><a href="/SpreadTheLove/logout.action"><i
-							class="fa fa-sign-out fa-fw"></i> Logout</a></li>
-				</ul>
-			</div>
+                    <form action="/SpreadTheLove/counsellor/search.action">
+	                    <input tabindex="1" class="commentarea" name="search" type="search" placeholder="Search" />
+                    </form>
+                    <ul class="side-nav">
+                    	<li class="active"><a href="/SpreadTheLove/counsellor/home.action"><i class="fa fa-home fa-fw"></i> Home</a></li>
+                    	<li><a href="/SpreadTheLove/counsellor/pending.action"><i class="fa fa-ellipsis-h fa-fw"></i> Pending</a></li>
+                        <li><a href="/SpreadTheLove/counsellor/activity.action"><i class="fa fa-bolt fa-fw"></i> Activity</a></li>
+                        <li><a href="/SpreadTheLove/counsellor/answered.action"><i class="fa fa-lightbulb-o fa-fw" ></i> Questions I answered</a></li>
+                        <li><a href="/SpreadTheLove/counsellor/followed.action"><i class="fa fa-star fa-fw"></i> Questions I followed</a></li>
+                        <hr>
+                        <li><a href="#"><i class="fa fa-fw fa-gears"></i> Account Settings</a></li>
+                        <li><a href="/SpreadTheLove/counsellor/cfaq.action"><i class="fa fa-question fa-fw"></i> FAQ</a></li>
+                        <li><a href="/SpreadTheLove/logout.action"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+                    </ul>
+                </div>
 		
 	</div>
 

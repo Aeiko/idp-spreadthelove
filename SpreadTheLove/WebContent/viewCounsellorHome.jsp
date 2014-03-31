@@ -104,7 +104,7 @@
 										<s:form action="/generatefollow.action" method="post" id="followForm_${message.id}">
 											<input type="hidden" name="messageID" value="${message.id}"/>
 										</s:form>
-										<s:form action="/individualpost.action" method="post"
+										<s:form action="/counsellorindividualpost.action" method="post"
 											id="indivPost_${message.id}">
 											<input type="hidden" name="messageID" value="${message.id}" />
 										</s:form>
