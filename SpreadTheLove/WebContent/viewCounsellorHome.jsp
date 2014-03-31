@@ -62,6 +62,7 @@
    			.highlight {
    				color: red !important;
    			}
+   			p { cursor: pointer; cursor: hand; }
         </style>
     </head>
     <body>
@@ -87,8 +88,8 @@
 					<div class="row" id="container">
 						<c:forEach var="message" items="${actionBean.messages}">
 						<div class="item" >
-							<div class="small-12 columns panel-1">
-								<h4><small class="white"><b><i class="fa fa-user"></i> &nbsp;${message.user.displayName }</b></small></h4>
+							<div class="small-11 columns panel-1" style="width:700px;">
+								<h4><small class="white"><b><i class="fa fa-user"></i> &nbsp;${message.user.displayName } - ${message.title}  </b></small></h4>
 								<p class="question" onclick="indivPost(${message.id});">${message.content }</p>
 								<!-- Buttons -->
 								<div class="row">
@@ -99,7 +100,7 @@
 										<h6 class="question">${actionBean.getFollows(message.id) } <i class="fa fa-star"></i></h6>
 										<p class="number hide">${actionBean.getFollows(message.id) }</p>
 									</div>
-									<div class="small-5 columns">
+									<div class="small-1 columns">
 										<s:form action="/generatefollow.action" method="post" id="followForm_${message.id}">
 											<input type="hidden" name="messageID" value="${message.id}"/>
 										</s:form>
@@ -108,7 +109,7 @@
 											<input type="hidden" name="messageID" value="${message.id}" />
 										</s:form>
 									</div>
-									<div class="small-3 columns text-right">
+									<div class="small-7 columns text-right">
 										
 										<c:choose>
 											<c:when test="${actionBean.hasFollowed(message.id)}">
@@ -122,14 +123,15 @@
 								</div>
 							</div>
 								<c:if test="${not empty actionBean.getAnswer(message.id) }">
-									<c:set var="answer" value="${actionBean.getAnswer(message.id)}"/>
-									<div class="small-12 columns panel-2">
-										<h4><small><b><i class="fa fa-check"></i> &nbsp;Answered by Counsellor ${answer.user.displayName }</b></small></h4>
+									<c:forEach var="answer" items="${actionBean.getAnswer(message.id)}">
+									<div class="small-11 columns panel-2" style="width:700px;">
+										<h4><small><b><i class="fa fa-check"></i> &nbsp;Answered by ${answer.user.displayName }</b></small></h4>
 										<p class="answer">${answer.content }</p>
 										<hr>
 									</div>
+									</c:forEach>
 								</c:if>
-							<div class="small-12 columns panel-2 reply">
+							<div class="small-11 columns panel-2 reply" style="width:700px;">
 								<h4><small><i class="fa fa-reply"></i> &nbsp;Leave a reply, ${actionBean.context.user.displayName }</small></h4>
 								<form action="/SpreadTheLove/counsellor/reply.action" style="margin-bottom: 0rem">
 									<input type="hidden" name="parentMessageId" value="${message.id }"/>
@@ -149,7 +151,7 @@
                     <ul class="side-nav">
                     	<li class="active"><a href="/SpreadTheLove/counsellor/home.action"><i class="fa fa-home fa-fw"></i> Home</a></li>
                     	<li><a href="/SpreadTheLove/counsellor/pending.action"><i class="fa fa-ellipsis-h fa-fw"></i> Pending</a></li>
-                        <li><a href="/SpreadTheLove/activity.action"><i class="fa fa-bolt fa-fw"></i> Activity</a></li>
+                        <li><a href="/SpreadTheLove/counsellor/activity.action"><i class="fa fa-bolt fa-fw"></i> Activity</a></li>
                         <li><a href="/SpreadTheLove/counsellor/answered.action"><i class="fa fa-lightbulb-o fa-fw" ></i> Questions I answered</a></li>
                         <li><a href="/SpreadTheLove/counsellor/followed.action"><i class="fa fa-star fa-fw"></i> Questions I followed</a></li>
                         <hr>

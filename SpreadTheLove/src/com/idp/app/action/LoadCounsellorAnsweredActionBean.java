@@ -25,8 +25,8 @@ public class LoadCounsellorAnsweredActionBean extends BaseActionBean{
 		List<Message> newList = new ArrayList<Message>();
 		for(Message m: messages){
 			if (!m.getUser().getType().equals("counsellor")){
-				if ((getAnswer(m.getId()+"")) != null){
-					if ((getAnswer(m.getId()+"")).getUser().getId().equals(getContext().getUser().getId())){
+				if ((getAnswer2(m.getId()+"")) != null){
+					if ((getAnswer2(m.getId()+"")).getUser().getId().equals(getContext().getUser().getId())){
 						newList.add(m);
 					}
 				}
@@ -36,7 +36,7 @@ public class LoadCounsellorAnsweredActionBean extends BaseActionBean{
 		return new ForwardResolution("/viewCounsellorAnswered.jsp");
 	}
 
-	public Message getAnswer(String messageId){
+	public Message getAnswer2(String messageId){
 		List<Message> results = messageDao.read();
 		Message foundEntity = null;
 		
@@ -46,6 +46,21 @@ public class LoadCounsellorAnsweredActionBean extends BaseActionBean{
 						&& m.getUser().getType().equals("counsellor")){
 					foundEntity = m;
 					break;
+				}
+			}
+		}
+        return foundEntity;
+	}
+	
+	public List<Message> getAnswer(String messageId){
+		List<Message> results = messageDao.read();
+		List<Message> foundEntity = new ArrayList<Message>();
+		for(Message m: results){
+			if (m.getParentMessage() != null) {
+				if (m.getParentMessage().getId() == Integer.parseInt(messageId)
+						&& m.getType().equals("reply")){
+					foundEntity.add(m);
+					
 				}
 			}
 		}

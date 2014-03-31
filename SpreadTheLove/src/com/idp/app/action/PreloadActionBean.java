@@ -33,7 +33,7 @@ public class PreloadActionBean extends BaseActionBean {
 		user3.setUsername("bot1");
 		
 		User counsellor = new User();
-		counsellor.setDisplayName("Sarah");
+		counsellor.setDisplayName("Sarah The Counsellor");
 		counsellor.setPassword("Sarah");
 		counsellor.setType("counsellor");
 		counsellor.setUsername("Sarah");

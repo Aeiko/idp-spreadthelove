@@ -87,8 +87,8 @@
 						
 						<c:forEach var="message" items="${actionBean.messages}">
 						<div class="item">
-							<div class="small-12 columns panel-1">
-								<h4><small class="white"><b><i class="fa fa-user"></i> &nbsp;${message.user.displayName }</b></small></h4>
+							<div class="small-11 columns panel-1" style="width:700px;">
+								<h4><small class="white"><b><i class="fa fa-user"></i> &nbsp;${message.user.displayName } - ${message.title}  </b></small></h4>
 								<p class="question">${message.content }</p>
 								<!-- Buttons -->
 								<div class="row">
@@ -117,14 +117,15 @@
 								</div>
 							</div>
 								<c:if test="${not empty actionBean.getAnswer(message.id) }">
-									<c:set var="answer" value="${actionBean.getAnswer(message.id)}"/>
-									<div class="small-12 columns panel-2">
-										<h4><small><b><i class="fa fa-check"></i> &nbsp;Answered by Counsellor ${answer.user.displayName }</b></small></h4>
+									<c:forEach var="answer" items="${actionBean.getAnswer(message.id)}">
+									<div class="small-11 columns panel-2" style="width:700px;">
+										<h4><small><b><i class="fa fa-check"></i> &nbsp;Answered by ${answer.user.displayName }</b></small></h4>
 										<p class="answer">${answer.content }</p>
 										<hr>
 									</div>
+									</c:forEach>
 								</c:if>
-							<div class="small-12 columns panel-2 reply">
+							<div class="small-11 columns panel-2 reply" style="width:700px;">
 								<h4><small><i class="fa fa-reply"></i> &nbsp;Leave a reply, ${actionBean.context.user.displayName }</small></h4>
 								<form action="/SpreadTheLove/counsellor/reply.action" style="margin-bottom: 0rem">
 									<input type="hidden" name="parentMessageId" value="${message.id }"/>

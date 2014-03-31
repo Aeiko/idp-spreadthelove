@@ -1,15 +1,15 @@
 package com.idp.app.action;
 
-import com.idp.app.model.Message;
-import com.idp.app.model.User;
-
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 
-@UrlBinding("/counsellor/reply.action")
-public class CounsellorReplyActionBean extends BaseActionBean{
+import com.idp.app.model.Message;
+import com.idp.app.model.User;
+
+@UrlBinding("/reply.action")
+public class ReplyActionBean extends BaseActionBean{
 	private String parentMessageId;
 	private String content;
 	
@@ -42,6 +42,6 @@ public class CounsellorReplyActionBean extends BaseActionBean{
 		
 		userDao.save(user);
 		userDao.commit();
-		return new RedirectResolution("/counsellor/home.action");
+		return new RedirectResolution("/home.action");
 	}
 }

@@ -24,7 +24,7 @@ public class LoadCounsellorHomeActionBean extends BaseActionBean{
 		Collections.reverse(messages);
 		List<Message> newList = new ArrayList<Message>();
 		for(Message m: messages){
-			if (!m.getUser().getType().equals("counsellor")){
+			if (!m.getType().equals("reply")){
 				newList.add(m);
 			}
 		}
@@ -32,16 +32,15 @@ public class LoadCounsellorHomeActionBean extends BaseActionBean{
 		return new ForwardResolution("/viewCounsellorHome.jsp");
 	}
 	
-	public Message getAnswer(String messageId){
+	public List<Message> getAnswer(String messageId){
 		List<Message> results = messageDao.read();
-		Message foundEntity = null;
-		
+		List<Message> foundEntity = new ArrayList<Message>();
 		for(Message m: results){
 			if (m.getParentMessage() != null) {
 				if (m.getParentMessage().getId() == Integer.parseInt(messageId)
-						&& m.getUser().getType().equals("counsellor")){
-					foundEntity = m;
-					break;
+						&& m.getType().equals("reply")){
+					foundEntity.add(m);
+					
 				}
 			}
 		}

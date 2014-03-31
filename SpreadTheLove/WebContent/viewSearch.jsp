@@ -86,12 +86,13 @@
 					                        </div>
 					                        
 					                        <c:if test="${not empty actionBean.getAnswer(message.id) }">
-												<c:set var="answer" value="${actionBean.getAnswer(message.id)}"/>
-												<div class="small-12 columns panel-2">
-													<h4><small data-reveal-id="promptModal"><b><i class="fa fa-check"></i> &nbsp;Answered by Counsellor ${answer.user.displayName }</b></small></h4>
+												<c:forEach var="answer" items="${actionBean.getAnswer(message.id)}">
+												<div class="small-11 columns panel-2" style="width:700px;">
+													<h4><small><b><i class="fa fa-check"></i> &nbsp;Answered by ${answer.user.displayName }</b></small></h4>
 													<p class="answer">${answer.content }</p>
 													<hr>
 												</div>
+												</c:forEach>
 											</c:if>
 					                        
 		                                </c:forEach>

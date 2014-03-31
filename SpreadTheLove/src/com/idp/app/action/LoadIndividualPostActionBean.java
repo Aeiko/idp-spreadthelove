@@ -1,5 +1,6 @@
 package com.idp.app.action;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.sourceforge.stripes.action.DefaultHandler;
@@ -43,16 +44,15 @@ public class LoadIndividualPostActionBean extends BaseActionBean {
 	public void setMessage(Message message) {
 		this.message = message;
 	}
-	public Message getAnswer(String messageId){
+	public List<Message> getAnswer(String messageId){
 		List<Message> results = messageDao.read();
-		Message foundEntity = null;
-		
+		List<Message> foundEntity = new ArrayList<Message>();
 		for(Message m: results){
 			if (m.getParentMessage() != null) {
 				if (m.getParentMessage().getId() == Integer.parseInt(messageID)
-						&& m.getUser().getType().equals("counsellor")){
-					foundEntity = m;
-					break;
+						&& m.getType().equals("reply")){
+					foundEntity.add(m);
+					
 				}
 			}
 		}
@@ -66,7 +66,7 @@ public class LoadIndividualPostActionBean extends BaseActionBean {
 		for(Follow f: follows){
 			if (f.getUser() != null){
 				if (f.getUser().getId().equals(user.getId())
-						&& f.getMessage().getId() == Integer.parseInt(messageID)){
+						&& f.getMessage().getId() == Integer.parseInt(messageId)){
 					return true;
 				}
 			}
@@ -81,7 +81,7 @@ public class LoadIndividualPostActionBean extends BaseActionBean {
 		for(Feel f: feels){
 			if (f.getUser() != null){
 				if (f.getUser().getId().equals(user.getId())
-						&& f.getMessage().getId() == Integer.parseInt(messageID)){
+						&& f.getMessage().getId() == Integer.parseInt(messageId)){
 					return true;
 				}
 			}
@@ -94,7 +94,7 @@ public class LoadIndividualPostActionBean extends BaseActionBean {
 		int num = 0;
 		List<Feel> feels = feelDao.read();
 		for(Feel f: feels){
-			if (f.getMessage().getId() == Integer.parseInt(messageID)){
+			if (f.getMessage().getId() == Integer.parseInt(messageId)){
 				num++;
 			}
 		}
@@ -105,7 +105,7 @@ public class LoadIndividualPostActionBean extends BaseActionBean {
 		int num = 0;
 		List<Follow> follows = followDao.read();
 		for(Follow f: follows){
-			if (f.getMessage().getId() == Integer.parseInt(messageID)){
+			if (f.getMessage().getId() == Integer.parseInt(messageId)){
 				num++;
 			}
 		}

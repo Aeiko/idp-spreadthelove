@@ -34,7 +34,7 @@ public class LoadRootSearchActionBean extends BaseActionBean{
 		Collections.reverse(messages);
 		List<Message> newList = new ArrayList<Message>();
 		for(Message m: messages){
-			if (!m.getUser().getType().equals("counsellor")){
+			if (!m.getType().equals("reply")){
 				if (m.getContent().contains(search)){
 					newList.add(m);
 				}
@@ -51,7 +51,7 @@ public class LoadRootSearchActionBean extends BaseActionBean{
 		for(Message m: results){
 			if (m.getParentMessage() != null) {
 				if (m.getParentMessage().getId() == Integer.parseInt(messageId)
-						&& m.getUser().getType().equals("counsellor")){
+						&& m.getUser().equals("reply")){
 					foundEntity = m;
 					break;
 				}

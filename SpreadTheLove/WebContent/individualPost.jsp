@@ -110,7 +110,7 @@ h6 {
 							<div class="small-11 columns panel-1" style="width:700px;">
 								<h4>
 									<small class="white"><b><i class="fa fa-user"></i>
-											&nbsp;${actionBean.message.user.displayName }</b></small>
+											&nbsp;${message.user.displayName } - ${message.title}  </b></small>
 								</h4>
 								<p class="question">${actionBean.message.content }</p>
 								<!-- Buttons -->
@@ -128,41 +128,41 @@ h6 {
 									</div>
 									<div class="small-1 columns">
 										<s:form action="/generatefollow.action" method="post"
-											id="followForm_${message.id}">
+											id="followForm_${actionBean.message.id}">
 											<input type="hidden" name="messageID" value="${message.id}" />
 										</s:form>
 										<s:form action="/generateifeelyou.action" method="post"
-											id="feelForm_${message.id}">
+											id="feelForm_${actionBean.message.id}">
 											<input type="hidden" name="messageID" value="${message.id}" />
 										</s:form>
 									</div>
 									<div class="small-7 columns text-right">
 										<c:choose>
 											<c:when test="${actionBean.hasFelt(actionBean.message.id)}">
-												<button id="feelbtn_${message.id}"
-													onclick="feel(${message.id});"
+												<button id="feelbtn_${actionBean.message.id}"
+													onclick="feel(${actionBean.message.id});"
 													class="tiny secondary radius highlight"
 													style="background: #fff">
 													<i class="fa fa-hand-o-up"></i> <b>I feel you</b>
 												</button>
 											</c:when>
 											<c:otherwise>
-												<button id="feelbtn_${message.id}" onclick="feel(${message.id});" class="tiny secondary radius" style="background: #fff">
+												<button id="feelbtn_${actionBean.message.id}" onclick="feel(${actionBean.message.id});" class="tiny secondary radius" style="background: #fff">
 													<i class="fa fa-hand-o-up"></i> <b>I feel you</b>
 												</button>
 											</c:otherwise>
 										</c:choose>
 										<c:choose>
 											<c:when test="${actionBean.hasFollowed(actionBean.message.id)}">
-												<button id="followbtn_${message.id}"
-													onclick="follow(${message.id});"
+												<button id="followbtn_${actionBean.message.id}"
+													onclick="follow(${actionBean.message.id});"
 													class="tiny secondary radius highlight"
 													style="background: #fff">
 													<i class="fa fa-star"></i> <b>Follow</b>
 												</button>
 											</c:when>
 											<c:otherwise>
-												<button id="followbtn_${message.id}" onclick="follow(${message.id});" class="tiny secondary radius" style="background: #fff">
+												<button id="followbtn_${actionBean.message.id}" onclick="follow(${actionBean.message.id});" class="tiny secondary radius" style="background: #fff">
 													<i class="fa fa-star"></i> <b>Follow</b>
 												</button>
 											</c:otherwise>
@@ -172,17 +172,15 @@ h6 {
 									</div>
 								</div>
 							</div>
-							<c:if test="${not empty actionBean.getAnswer(message.id) }">
-								<c:set var="answer" value="${actionBean.getAnswer(message.id)}" />
-								<div class="small-11 columns panel-2" style="width:700px;">
-									<h4>
-										<small><b><i class="fa fa-check"></i>
-												&nbsp;Answered by Counsellor ${answer.user.displayName}</b></small>
-									</h4>
-									<p class="answer">${answer.content }</p>
-									<hr>
-								</div>
-							</c:if>
+							<c:if test="${not empty actionBean.getAnswer(actionBean.message.id) }">
+									<c:forEach var="answer" items="${actionBean.getAnswer(actionBean.message.id)}">
+									<div class="small-11 columns panel-2" style="width:700px;">
+										<h4><small><b><i class="fa fa-check"></i> &nbsp;Answered by ${answer.user.displayName }</b></small></h4>
+										<p class="answer">${answer.content }</p>
+										<hr>
+									</div>
+									</c:forEach>
+								</c:if>
 							<div class="small-11 columns panel-2 reply" style="width:700px;">
 								<h4>
 									<small><i class="fa fa-reply"></i> &nbsp;Leave a reply,
@@ -191,7 +189,7 @@ h6 {
 								<form action="/SpreadTheLove/reply.action"
 									style="margin-bottom: 0rem">
 									<input type="hidden" name="parentMessageId"
-										value="${message.id }" />
+										value="${actionBean.message.id }" />
 									<textarea class="commentarea" name="content"
 										style="min-height: 75px"></textarea>
 								</form>

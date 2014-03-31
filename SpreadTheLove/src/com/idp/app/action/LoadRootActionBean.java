@@ -23,7 +23,7 @@ public class LoadRootActionBean extends BaseActionBean{
 		Collections.reverse(messages);
 		List<Message> newList = new ArrayList<Message>();
 		for(Message m: messages){
-			if (!m.getUser().getType().equals("counsellor")){
+			if (!m.getType().equals("reply")){
 				newList.add(m);
 			}
 		}

@@ -88,6 +88,8 @@ h6 {
 .highlight {
 	color: red !important;
 }
+
+p { cursor: pointer; cursor: hand; }
 </style>
 </head>
 <body>
@@ -130,7 +132,7 @@ h6 {
 							<div class="small-11 columns panel-1" style="width:700px;" >
 								<h4>
 									<small class="white"><b><i class="fa fa-user" ></i>
-											&nbsp;${message.user.displayName }</b></small>
+											&nbsp;${message.user.displayName } - ${message.title}  </b></small>
 								</h4>
 								<p class="question" onclick="indivPost(${message.id});">${message.content }</p>
 								<!-- Buttons -->
@@ -198,15 +200,13 @@ h6 {
 								</div>
 							</div>
 							<c:if test="${not empty actionBean.getAnswer(message.id) }">
-								<c:set var="answer" value="${actionBean.getAnswer(message.id)}" />
-								<div class="small-11 columns panel-2" style="width:700px;">
-									<h4>
-										<small><b><i class="fa fa-check"></i>
-												&nbsp;Answered by Counsellor ${answer.user.displayName}</b></small>
-									</h4>
-									<p class="answer">${answer.content }</p>
-									<hr>
-								</div>
+									<c:forEach var="answer" items="${actionBean.getAnswer(message.id)}">
+									<div class="small-11 columns panel-2" style="width:700px;">
+										<h4><small><b><i class="fa fa-check"></i> &nbsp;Answered by ${answer.user.displayName }</b></small></h4>
+										<p class="answer">${answer.content }</p>
+										<hr>
+									</div>
+									</c:forEach>
 							</c:if>
 							<div class="small-11 columns panel-2 reply" style="width:700px;">
 								<h4>

@@ -18,6 +18,10 @@ public class LoginActionBean extends BaseActionBean {
 	@DefaultHandler
 	public Resolution login(){
 		user = userDao.findByUsername(username);
+		if(user==null){
+			return new RedirectResolution("/index.action");
+		}
+		
 		getContext().setUser(user);
 		if(user.getType().equals("child")){
 			return new RedirectResolution("/home.action");	

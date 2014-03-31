@@ -42,7 +42,7 @@ public class LoadCounsellorFollowedActionBean extends BaseActionBean{
 		for(Message m: results){
 			if (m.getParentMessage() != null) {
 				if (m.getParentMessage().getId() == Integer.parseInt(messageId)
-						&& m.getUser().getType().equals("counsellor")){
+						&& m.getUser().equals("reply")){
 					foundEntity = m;
 					break;
 				}
