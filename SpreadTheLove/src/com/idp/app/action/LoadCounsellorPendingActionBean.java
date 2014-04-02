@@ -24,7 +24,7 @@ public class LoadCounsellorPendingActionBean extends BaseActionBean{
 		Collections.reverse(messages);
 		List<Message> newList = new ArrayList<Message>();
 		for(Message m: messages){
-			if (!m.getType().equals("reply")){
+			if (!m.getUser().getType().equals("counsellor")){
 				if ((getAnswer(m.getId()+"")) == null){
 					newList.add(m);
 				}
@@ -34,15 +34,16 @@ public class LoadCounsellorPendingActionBean extends BaseActionBean{
 		return new ForwardResolution("/viewPending.jsp");
 	}
 	
-	public List<Message> getAnswer(String messageId){
+	public Message getAnswer(String messageId){
 		List<Message> results = messageDao.read();
-		List<Message> foundEntity = new ArrayList<Message>();
+		Message foundEntity = null;
+		
 		for(Message m: results){
 			if (m.getParentMessage() != null) {
 				if (m.getParentMessage().getId() == Integer.parseInt(messageId)
-						&& m.getType().equals("reply")){
-					foundEntity.add(m);
-					
+						&& m.getUser().getType().equals("counsellor")){
+					foundEntity = m;
+					break;
 				}
 			}
 		}

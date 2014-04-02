@@ -15,7 +15,7 @@
         <script src="https://cdn.firebase.com/v0/firebase.js"></script>
     </head>
     <body>
-        <div class="contain-to-grid sticky" data-options="st icky_on: large">
+        <div class="contain-to-grid sticky" data-options="sticky_on: large">
             <nav class="top-bar" data-topbar>
                 <ul class="title-area">
                     <li class="name">

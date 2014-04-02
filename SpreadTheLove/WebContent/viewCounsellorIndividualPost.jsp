@@ -106,8 +106,8 @@ h6 {
 			<!-- Post Listing -->
 			<div class="small-9 columns">
 				<div class="row" id="container">
-						<div class="item">
-							<div class="small-11 columns panel-1" style="width:700px;">
+						<div class="item" style="width:100%;">
+							<div class="small-12 columns panel-1">
 								<h4>
 									<small class="white"><b><i class="fa fa-user"></i>
 											&nbsp;${actionBean.message.user.displayName } - ${message.title}  </b></small>
@@ -174,14 +174,14 @@ h6 {
 							</div>
 							<c:if test="${not empty actionBean.getAnswer(actionBean.message.id) }">
 									<c:forEach var="answer" items="${actionBean.getAnswer(actionBean.message.id)}">
-									<div class="small-11 columns panel-2" style="width:700px;">
+									<div class="small-12 columns panel-2">
 										<h4><small><b><i class="fa fa-check"></i> &nbsp;Answered by ${answer.user.displayName }</b></small></h4>
 										<p class="answer">${answer.content }</p>
 										<hr>
 									</div>
 									</c:forEach>
 								</c:if>
-							<div class="small-11 columns panel-2 reply" style="width:700px;">
+							<div class="small-12 columns panel-2 reply">
 								<h4>
 									<small><i class="fa fa-reply"></i> &nbsp;Leave a reply,
 										${actionBean.context.user.displayName }</small>

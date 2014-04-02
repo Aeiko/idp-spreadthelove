@@ -11,8 +11,8 @@
 <title>Spread the love</title>
 <link rel="stylesheet" href="css/foundation.css" />
 <link rel="stylesheet" href="css/custom.css" />
-<link rel="stylesheet"
-	href="font-awesome-4.0.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="/SpreadTheLove/css/trip.min.css" />
+<link rel="stylesheet" href="font-awesome-4.0.3/css/font-awesome.min.css">
 <script src="js/vendor/modernizr.js"></script>
 <style>
 .panel-1 {
@@ -107,29 +107,33 @@ p { cursor: pointer; cursor: hand; }
 			
 			<!-- Post Listing -->
 			<div class="small-9 columns">
-				<h6>
-					Hi ${actionBean.context.user.displayName }!<br> Ask a question...<i class=" fa fa-comment-o"></i> It's safe in
-					here! :)
-				</h6>
-			
-
-				<s:form action="/postquestion.action">
-					<input type="text" name="title" placeholder="Title of post">
-					<textarea name="message"
-						placeholder="Ask something or confide in us. We will try our best to help you."></textarea>
-					<s:submit name="post" class="tiny radius button success"
-						value="Post" />
-				</s:form>
-				
+				<div class="row">
+					<div class="small-12 columns" style="background: rgba(255,255,255,0.2);">
+						<br>
+						<h6>
+							Hi <b>${actionBean.context.user.displayName }!</b><br> Ask a question...<i class=" fa fa-comment-o"></i> It's safe in
+							here! :)
+						</h6>
+					
+						<s:form action="/postquestion.action">
+							<input type="text" name="title" placeholder="Title of post">
+							<textarea id="start" name="message" class="commentarea" style="min-height: 100px;"
+								placeholder="Ask something or confide in us. We will try our best to help you."></textarea>
+							<s:submit name="post" class="hide"
+								value="Post" />
+						</s:form>
+					</div>
+				</div>	
 				<div id="sorts" class="button-group">
+					<br>
 					<button class="tiny radius success" data-sort-value="random">Recent</button>
-					<button class="tiny radius " data-sort-value="number">Popular</button>
+					<button id="sortsB" class="tiny radius " data-sort-value="number">Popular</button>
 				</div>
 				
 				<div class="row" id="container">
 					<c:forEach var="message" items="${actionBean.messages}">
-						<div class="item" >
-							<div class="small-11 columns panel-1" style="width:700px;" >
+						<div class="item"  style="width:100%;" >
+							<div class="small-12 columns panel-1" >
 								<h4>
 									<small class="white"><b><i class="fa fa-user" ></i>
 											&nbsp;${message.user.displayName } - ${message.title}  </b></small>
@@ -201,14 +205,14 @@ p { cursor: pointer; cursor: hand; }
 							</div>
 							<c:if test="${not empty actionBean.getAnswer(message.id) }">
 									<c:forEach var="answer" items="${actionBean.getAnswer(message.id)}">
-									<div class="small-11 columns panel-2" style="width:700px;">
+									<div class="small-12 columns panel-2">
 										<h4><small><b><i class="fa fa-check"></i> &nbsp;Answered by ${answer.user.displayName }</b></small></h4>
 										<p class="answer">${answer.content }</p>
 										<hr>
 									</div>
 									</c:forEach>
 							</c:if>
-							<div class="small-11 columns panel-2 reply" style="width:700px;">
+							<div class="small-12 columns panel-2 reply">
 								<h4>
 									<small><i class="fa fa-reply"></i> &nbsp;Leave a reply,
 										${actionBean.context.user.displayName }</small>
@@ -229,7 +233,7 @@ p { cursor: pointer; cursor: hand; }
 			<!-- Side Bar Nav -->
 			<div class="small-3 columns sidebar" style="min-height: 300px">
 				<form action="/SpreadTheLove/counsellor/search.action">
-					<input tabindex="1" class="commentarea" name="search" type="search"
+					<input id="search_box" tabindex="1" class="commentarea" name="search" type="search"
 						placeholder="Search" />
 				</form>
 				<ul class="side-nav">
@@ -256,7 +260,59 @@ p { cursor: pointer; cursor: hand; }
 	<script src="/SpreadTheLove/js/vendor/jquery.js"></script>
 	<script src="/SpreadTheLove/js/foundation.min.js"></script>
 	<script src="/SpreadTheLove/js/isotope.pkgd.min.js"></script>
+	<script src="/SpreadTheLove/js/trip.min.js"></script>
 	<script>
+		var trip = new Trip([
+			{ 
+				sel : $('#start'),
+				content : 'You can start by posting a question, go ahead and try it!',
+				position : 'n',
+				showNavigation:true,
+				delay : -1
+			},
+			{
+				sel : $('#start'),
+				content : 'Just hit the Enter button to submit the question when you\'re ready.',
+				position : 's',
+				showNavigation:true,
+				delay : -1
+			},
+			{ 
+				sel : $('#container'),
+				content : 'Questions from other children will be listed here.',
+				position : 'n',
+				showNavigation:true,
+				delay : -1
+         	},
+            {
+					sel : $('#sortsB'),
+					content : 'You can also sort the questions by date or popularity.',
+					position : 'e',
+					showNavigation:true,
+               	delay : -1
+            },
+			{
+				sel : $('#followbtn_1'),
+				content : 'If you would like to follow another kid, click on this button!',
+				position : 'n',
+				showNavigation:true,
+				delay : -1
+			},
+			{
+				sel : $('#feelbtn_1'),
+				content : 'Let the child know that you understand what he is feeling.',
+				position : 'n',
+				showNavigation:true,
+				delay : -1
+			},
+			{
+				sel : $('#search_box'),
+				content : 'You can also search for questions using this box.',
+				position : 'n',
+				showNavigation:true,
+				delay : -1
+			}
+			], {});
 			var $container = $('#container');
 			// init
 			$container.isotope({
@@ -296,6 +352,7 @@ p { cursor: pointer; cursor: hand; }
 		        });
 		    });
 	        $(document).foundation();
+	        trip.start();
 	    </script>
 </body>
 </html>
