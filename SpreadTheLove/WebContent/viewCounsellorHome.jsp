@@ -166,6 +166,7 @@
 		<script src="/SpreadTheLove/js/vendor/jquery.js"></script>
 	    <script src="/SpreadTheLove/js/foundation.min.js"></script>
 	    <script src="/SpreadTheLove/js/isotope.pkgd.min.js"></script>
+	    <script src="/SpreadTheLove/js/jquery.cookie.js"></script>
 	    <script src="/SpreadTheLove/js/trip.min.js"></script>
 	    <script>
 			var trip = new Trip([
@@ -239,7 +240,17 @@
 		        });
 		    });
 	        $(document).foundation();
-		    trip.start();
+	        if($.cookie('idp-trip') === null || $.cookie('idp-trip') === "" || $.cookie('idp-trip') === "null" || $.cookie('idp-trip') === undefined)
+	        {
+	              //no cookie
+	              $.cookie('idp-trip', 'true', { expires: 365 });
+	              trip.start();
+	        }
+	        else
+	        {
+	             //have cookie
+	        }
+			
 	    </script>	
 	</body>
 </html>

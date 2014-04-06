@@ -260,7 +260,9 @@ p { cursor: pointer; cursor: hand; }
 	<script src="/SpreadTheLove/js/vendor/jquery.js"></script>
 	<script src="/SpreadTheLove/js/foundation.min.js"></script>
 	<script src="/SpreadTheLove/js/isotope.pkgd.min.js"></script>
+	<script src="/SpreadTheLove/js/jquery.cookie.js"></script>
 	<script src="/SpreadTheLove/js/trip.min.js"></script>
+	
 	<script>
 		var trip = new Trip([
 			{ 
@@ -352,7 +354,16 @@ p { cursor: pointer; cursor: hand; }
 		        });
 		    });
 	        $(document).foundation();
-	        trip.start();
+	        if($.cookie('idp-child-trip') === null || $.cookie('idp-child-trip') === "" || $.cookie('idp-child-trip') === "null" || $.cookie('idp-child-trip') === undefined)
+	        {
+	              //no cookie
+	              $.cookie('idp-child-trip', 'true', { expires: 365 });
+	              trip.start();
+	        }
+	        else
+	        {
+	             //have cookie
+	        }
 	    </script>
 </body>
 </html>
