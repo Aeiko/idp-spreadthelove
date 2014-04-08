@@ -1,0 +1,45 @@
+.left-marker {
+	float: left;
+    height: 25px;
+    width: 25px;
+    z-index: 2;
+    position: relative;
+}
+
+.feltright-marker {
+    float: left;
+    z-index: 2;
+    height: 25px;
+    width: 25px;
+    position: relative;
+    margin-top: -14px;
+}
+
+.feltdotted-line {
+    height: 1px;
+    width: 13%;
+    border: 1px dotted;
+    position: relative;
+    margin: 13px 6.5px 0 10px;
+    
+}
+
+.dotted-line {
+    height: 1px;
+    width: 100%;
+    border: 1px dotted;
+    position: relative;
+    margin: 13px 6.5px 0 -20px;
+}
+.right-marker {
+    float: right;
+    z-index: 2;
+    height: 25px;
+    width: 25px;
+    position: relative;
+    margin-top: -14px;
+}
+
+.container1 {
+	margin-left: 25px;
+	}
