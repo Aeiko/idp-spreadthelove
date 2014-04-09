@@ -96,21 +96,48 @@
 									<div class="small-2 columns">
 										<h6 class="question">${actionBean.getFollows(message.id) } <i class="fa fa-star"></i></h6>
 									</div>
-									<div class="small-5 columns">
+									<div class="small-1 columns">
 										<s:form action="/generatefollow.action" method="post" id="followForm_${message.id}">
-											<input type="hidden" name="messageID" value="${message.id}"/>
+											<input type="hidden" name="messageID" value="${message.id}" />
+										</s:form>
+										<s:form action="/generateifeelyou.action" method="post"
+											id="feelForm_${message.id}">
+											<input type="hidden" name="messageID" value="${message.id}" />
 										</s:form>
 									</div>
-									<div class="small-3 columns text-right">
-										
+									<div class="small-7 columns text-right">
 										<c:choose>
-											<c:when test="${actionBean.hasFollowed(message.id)}">
-												<button id="followbtn_${message.id}" onclick="follow(${message.id});" class="tiny secondary radius highlight" style="background: #fff"><i class="fa fa-star"></i> <b>Follow</b></button>
+											<c:when test="${actionBean.hasFelt(message.id)}">
+												<button id="feelbtn_${message.id}"
+													onclick="feel(${message.id});"
+													class="tiny secondary radius highlight"
+													style="background: #fff">
+													<i class="fa fa-hand-o-up"></i> <b>I feel you</b>
+												</button>
 											</c:when>
 											<c:otherwise>
-												<button id="followbtn_${message.id}" onclick="follow(${message.id});" class="tiny secondary radius" style="background: #fff"><i class="fa fa-star"></i> <b>Follow</b></button>	
+												<button id="feelbtn_${message.id}" onclick="feel(${message.id});" class="tiny secondary radius" style="background: #fff">
+													<i class="fa fa-hand-o-up"></i> <b>I feel you</b>
+												</button>
 											</c:otherwise>
 										</c:choose>
+										<c:choose>
+											<c:when test="${actionBean.hasFollowed(message.id)}">
+												<button id="followbtn_${message.id}"
+													onclick="follow(${message.id});"
+													class="tiny secondary radius highlight"
+													style="background: #fff">
+													<i class="fa fa-star"></i> <b>Follow</b>
+												</button>
+											</c:when>
+											<c:otherwise>
+												<button id="followbtn_${message.id}" onclick="follow(${message.id});" class="tiny secondary radius" style="background: #fff">
+													<i class="fa fa-star"></i> <b>Follow</b>
+												</button>
+											</c:otherwise>
+										</c:choose>
+										
+										
 									</div>
 								</div>
 							</div>
@@ -184,6 +211,11 @@
 				$.post('/SpreadTheLove/generatefollow.action', $("#followForm_" + messageId).serialize(), function (data) {
 			    });
 				$('#followbtn_' + messageId ).toggleClass("highlight");
+			}
+		    function feel(messageId){
+				$.post('/SpreadTheLove/generateifeelyou.action', $("#feelForm_" + messageId).serialize(), function (data) {
+			    });
+				$('#feelbtn_' + messageId ).toggleClass("highlight");
 			}
 		    $(document).ready(function() {
 		        $('.commentarea').keydown(function(event) {
