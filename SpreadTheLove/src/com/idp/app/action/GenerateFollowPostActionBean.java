@@ -30,7 +30,7 @@ public class GenerateFollowPostActionBean extends BaseActionBean {
 
 			user.addFollow(follow);
 			Activity activity = new Activity();
-			activity.setDescription("You have started following "+user.getDisplayName()+"'s post on '"+message.getTitle()+"'.");
+			activity.setDescription("You have started following "+message.getUser().getDisplayName()+"'s post on '"+message.getTitle()+"'.");
 			user.addActivity(activity);
 
 		} else {

@@ -175,7 +175,7 @@ h6 {
 			</div>
 			<!-- Side Bar Nav -->
 			<div class="small-3 columns sidebar" style="min-height: 300px">
-				<form action="/SpreadTheLove/counsellor/search.action">
+				<form action="/SpreadTheLove/search.action">
 					<input tabindex="1" class="commentarea" name="search" type="search"
 						placeholder="Search" />
 				</form>

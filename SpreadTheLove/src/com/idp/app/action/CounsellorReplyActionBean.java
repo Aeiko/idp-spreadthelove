@@ -1,5 +1,6 @@
 package com.idp.app.action;
 
+import com.idp.app.model.Activity;
 import com.idp.app.model.Message;
 import com.idp.app.model.User;
 
@@ -39,6 +40,11 @@ public class CounsellorReplyActionBean extends BaseActionBean{
 		m.setParentMessage(parentMessage);
 		m.setUser(user);
 		m.setType("reply");
+		
+		Activity activity = new Activity();
+		activity.setDescription("You have replied to "+parentMessage.getUser().getDisplayName()+"'s post on '"+parentMessage.getTitle()+"'.");
+		user.addActivity(activity);
+		
 		
 		userDao.save(user);
 		userDao.commit();

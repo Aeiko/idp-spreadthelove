@@ -28,7 +28,7 @@ public class GenerateIFeelYouActionBean extends BaseActionBean{
 
 			user.addFeel(feel);
 			Activity activity = new Activity();
-			activity.setDescription("You feel for "+user.getDisplayName()+".");
+			activity.setDescription("You feel for "+message.getUser().getDisplayName()+".");
 			user.addActivity(activity);
 
 		} else {
