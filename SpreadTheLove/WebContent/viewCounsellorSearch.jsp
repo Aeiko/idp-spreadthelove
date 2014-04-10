@@ -150,8 +150,8 @@
                         <li><a href="/counsellor/answered.action"><i class="fa fa-lightbulb-o fa-fw" ></i> Questions I answered</a></li>
                         <li><a href="/counsellor/followed.action"><i class="fa fa-star fa-fw"></i> Posts I followed</a></li>
                         <hr>
-                        <li><a href="#"><i class="fa fa-fw fa-gears"></i> Account Settings</a></li>
-                        <li><a href="#"><i class="fa fa-question fa-fw"></i> Help</a></li>
+                        <li><a href="/counsellor/account.action"><i class="fa fa-fw fa-gears"></i> Account Settings</a></li>
+                        <li><a href="/counsellor/cfaq.action"><i class="fa fa-question fa-fw"></i> Help</a></li>
                         <li><a href="/logout.action"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
                     </ul>
                 </div>

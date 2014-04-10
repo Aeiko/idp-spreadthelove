@@ -100,20 +100,17 @@ h6 {
 			</div>
 			<div class="small-6 columns text-right"></div>
 		</div>
-		<div class="row">
-		
-		</div>
 		<div class="row" style="padding-top: 20px;">
-			
-			<!-- Post Listing -->
-			<div class="small-9 columns">
-				
-				
+			<div class="small-12 columns">
 				<div id="sorts" class="button-group">
 					<button class="tiny radius success" data-sort-value="random">Recent</button>
 					<button class="tiny radius " data-sort-value="number">Popular</button>
 				</div>
-				
+			</div>
+		</div>
+		<div class="row">
+			<!-- Post Listing -->
+			<div class="small-9 columns">
 				<div class="row" id="container">
 					<c:forEach var="message" items="${actionBean.messages}">
 						<div class="item" style="width:100%;">

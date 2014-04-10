@@ -214,7 +214,7 @@
 				$('#followbtn_' + messageId ).toggleClass("highlight");
 			}
 		    function feel(messageId){
-				$.post('/SpreadTheLove/generateifeelyou.action', $("#feelForm_" + messageId).serialize(), function (data) {
+				$.post('/generateifeelyou.action', $("#feelForm_" + messageId).serialize(), function (data) {
 			    });
 				$('#feelbtn_' + messageId ).toggleClass("highlight");
 			}

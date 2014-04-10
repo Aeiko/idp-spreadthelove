@@ -115,11 +115,11 @@
                     <ul class="side-nav">
                     	<li class="active"><a href="/counsellor/home.action"><i class="fa fa-home fa-fw"></i> Home</a></li>
                     	<li><a href="/counsellor/pending.action"><i class="fa fa-ellipsis-h fa-fw"></i> Pending</a></li>
-                        <li><a href="/activity.action"><i class="fa fa-bolt fa-fw"></i> Activity</a></li>
+                        <li><a href="/counsellor/activity.action"><i class="fa fa-bolt fa-fw"></i> Activity</a></li>
                         <li><a href="/counsellor/answered.action"><i class="fa fa-lightbulb-o fa-fw" ></i> Questions I answered</a></li>
                         <li><a href="/counsellor/followed.action"><i class="fa fa-star fa-fw"></i> Posts I followed</a></li>
                         <hr>
-                        <li><a href="#"><i class="fa fa-fw fa-gears"></i> Account Settings</a></li>
+                        <li><a href="/counsellor/account.action"><i class="fa fa-fw fa-gears"></i> Account Settings</a></li>
                         <li><a href="/counsellor/cfaq.action"><i class="fa fa-question fa-fw"></i> Help</a></li>
                         <li><a href="/logout.action"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
                     </ul>

@@ -85,6 +85,8 @@
 						<input type="text" id="username" name="username" value="${actionBean.context.user.username }" />
 						<label for="displayName" style="color: #fff;">Display Name</label>
 						<input type="text" id="displayName" name="displayName" value="${actionBean.context.user.displayName }" />
+						<label for="workplace" style="color: #fff;">Workplace</label>
+						<input type="text" id="workplace" name="workplace" placeholder="Enter your workplace" />
 						<label for="newPassword" style="color: #fff;">New Password</label>
 						<input type="password" id="newPassword" name="password" value="" placeholder="Enter your new password" />
 						<label for="newPassword2" style="color: #fff;">Re-enter Password</label>
@@ -100,12 +102,12 @@
                     <ul class="side-nav">
                     	<li><a href="/counsellor/home.action"><i class="fa fa-home fa-fw"></i> Home</a></li>
                     	<li><a href="/counsellor/pending.action"><i class="fa fa-ellipsis-h fa-fw"></i> Pending</a></li>
-                        <li><a href="/activity.action"><i class="fa fa-bolt fa-fw"></i> Activity</a></li>
+                        <li><a href="/counsellor/activity.action"><i class="fa fa-bolt fa-fw"></i> Activity</a></li>
                         <li><a href="/counsellor/answered.action"><i class="fa fa-lightbulb-o fa-fw" ></i> Questions I answered</a></li>
                         <li><a href="/counsellor/followed.action"><i class="fa fa-star fa-fw"></i> Posts I followed</a></li>
                         <hr>
-                        <li class="active"><a href="#"><i class="fa fa-fw fa-gears"></i> Account Settings</a></li>
-                        <li><a href="/counsellor/account.action"><i class="fa fa-question fa-fw"></i> Help</a></li>
+                        <li class="active"><a href="/counsellor/account.action"><i class="fa fa-fw fa-gears"></i> Account Settings</a></li>
+                        <li><a href="/counsellor/cfaq.action"><i class="fa fa-question fa-fw"></i> Help</a></li>
                         <li><a href="/logout.action"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
                     </ul>
                 </div>
