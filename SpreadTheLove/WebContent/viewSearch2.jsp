@@ -2,17 +2,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://stripes.sourceforge.net/stripes.tld"%>
 <%@ taglib prefix="d" uri="http://stripes.sourceforge.net/stripes-dynattr.tld"%>
-<%@ include file="googleAnalytics.jsp" %>
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Spread the love</title>
-        <link rel="stylesheet" href="/css/foundation.css" />
-        <link rel="stylesheet" href="/css/custom.css" />
-        <link rel="stylesheet" href="/font-awesome-4.0.3/css/font-awesome.min.css">
-        <script src="/js/vendor/modernizr.js"></script>
+        <link rel="stylesheet" href="/SpreadTheLove/css/foundation.css" />
+        <link rel="stylesheet" href="/SpreadTheLove/css/custom.css" />
+        <link rel="stylesheet" href="/SpreadTheLove/font-awesome-4.0.3/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/testing.css">
+        
+        <script src="/SpreadTheLove/js/vendor/modernizr.js"></script>
         <style>
 	        .panel-1 {
 	        	color: #fff !important;
@@ -107,21 +108,29 @@
 										</s:form>
 									</div>
 									<div class="small-7 columns text-right">
+										
 										<c:choose>
 											<c:when test="${actionBean.hasFelt(message.id)}">
-												<button id="feelbtn_${message.id}"
-													onclick="feel(${message.id});"
-													class="tiny secondary radius highlight"
-													style="background: #fff">
-													<i class="fa fa-hand-o-up"></i> <b>I feel you</b>
-												</button>
+												<div class="small-offset-4 small-5 columns">
+														<img src="img/splleft2.png" alt="splleft1" class="left-marker">
+														<div class="feltdotted-line"></div>
+														<img src="img/splright2.png" alt="splright1" class="feltright-marker">
+												</div>		
 											</c:when>
 											<c:otherwise>
-												<button id="feelbtn_${message.id}" onclick="feel(${message.id});" class="tiny secondary radius" style="background: #fff">
-													<i class="fa fa-hand-o-up"></i> <b>I feel you</b>
-												</button>
+												<div class="small-offset-4 small-5 columns">
+													<img src="img/splleft1.png" alt="splleft1" class="left-marker">
+													<div class="container1" >
+														<div class="dotted-line"></div>
+														<img src="img/splright1.png" alt="splright1"
+															id="${message.id}"
+															class="right-marker draggable" style="cursor: w-resize">
+													</div>
+												</div>
 											</c:otherwise>
-										</c:choose>
+										</c:choose>										
+										
+										
 										<c:choose>
 											<c:when test="${actionBean.hasFollowed(message.id)}">
 												<button id="followbtn_${message.id}"
@@ -153,7 +162,7 @@
 								</c:if>
 							<div class="small-12 columns panel-2 reply">
 								<h4><small><i class="fa fa-reply"></i> &nbsp;Leave a reply, ${actionBean.context.user.displayName }</small></h4>
-								<form action="/reply.action" style="margin-bottom: 0rem">
+								<form action="/SpreadTheLove/reply.action" style="margin-bottom: 0rem">
 									<input type="hidden" name="parentMessageId" value="${message.id }"/>
 									<textarea class="commentarea" name="content" style="min-height: 75px"></textarea>
 								</form>
@@ -166,32 +175,32 @@
 			
 				<!-- Side Bar Nav -->
                 <div class="small-3 columns sidebar" style="min-height: 300px">
-                    <form action="/search.action">
+                    <form action="/SpreadTheLove/search.action">
 	                    <input tabindex="1" class="commentarea" name="search" type="search" placeholder="Search" />
                     </form>
                     <ul class="side-nav">
-					<li class="active"><a href="/home.action"><i
+					<li class="active"><a href="/SpreadTheLove/home.action"><i
 							class="fa fa-home fa-fw"></i> Home</a></li>
-					<li><a href="/activity.action"><i
+					<li><a href="/SpreadTheLove/activity.action"><i
 							class="fa fa-bolt fa-fw"></i> Activity</a></li>
-					<li><a href="/questioniasked.action"><i
+					<li><a href="/SpreadTheLove/questioniasked.action"><i
 							class="fa fa-lightbulb-o fa-fw"></i> Questions I asked</a></li>
-					<li><a href="/postsifollowed.action"><i
+					<li><a href="/SpreadTheLove/postsifollowed.action"><i
 							class="fa fa-star fa-fw"></i> Posts I followed </a></li>
 					<hr>
-					<li><a href="/accountsettings.action"><i
+					<li><a href="/SpreadTheLove/accountsettings.action"><i
 							class="fa fa-fw fa-gears"></i> Account Settings</a></li>
-					<li><a href="/faq.action"><i
+					<li><a href="/SpreadTheLove/faq.action"><i
 							class="fa fa-question fa-fw"></i> Help</a></li>
-					<li><a href="/logout.action"><i
+					<li><a href="/SpreadTheLove/logout.action"><i
 							class="fa fa-sign-out fa-fw"></i> Logout</a></li>
 				</ul>
                 </div>
 			</div>
 		</div>
-		<script src="/js/vendor/jquery.js"></script>
-	    <script src="/js/foundation.min.js"></script>
-	    <script src="/js/isotope.pkgd.min.js"></script>
+		<script src="/SpreadTheLove/js/vendor/jquery.js"></script>
+	    <script src="/SpreadTheLove/js/foundation.min.js"></script>
+	    <script src="/SpreadTheLove/js/isotope.pkgd.min.js"></script>
 	    <script>
 			var $container = $('#container');
 			// init
@@ -209,7 +218,7 @@
 			    
 		  	});
 		    function follow(messageId){
-				$.post('/generatefollow.action', $("#followForm_" + messageId).serialize(), function (data) {
+				$.post('/SpreadTheLove/generatefollow.action', $("#followForm_" + messageId).serialize(), function (data) {
 			    });
 				$('#followbtn_' + messageId ).toggleClass("highlight");
 			}
@@ -228,5 +237,10 @@
 		    });
 	        $(document).foundation();
 	    </script>	
+	    
+<script src="js/vendor/jquery-1.10.2.js"></script>
+<script src="js/vendor/jquery-ui-1.10.4.custom.js"></script>
+<script src="js/vendor/testing.js"></script>
+	    
 	</body>
 </html>

@@ -74,6 +74,22 @@ public class LoadSearchActionBean extends BaseActionBean{
 		return false;
 	}
 	
+	public boolean hasFelt(String messageId) {
+		User user = getContext().getUser();
+		
+		List<Feel> feels = feelDao.read();
+		for(Feel f: feels){
+			if (f.getUser() != null){
+				if (f.getUser().getId().equals(user.getId())
+						&& f.getMessage().getId() == Integer.parseInt(messageId)){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	
 	public int getFeels(String messageId){
 		int num = 0;
 		List<Feel> feels = feelDao.read();
