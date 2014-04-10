@@ -42,7 +42,7 @@ public class LoadHomeActionBean extends BaseActionBean{
 			}
 		}
 		messages = newList;
-		return new ForwardResolution("/home.jsp");
+		return new ForwardResolution("/home2.jsp");
 	}
 	
 	public List<Message> getAnswer(String messageId){

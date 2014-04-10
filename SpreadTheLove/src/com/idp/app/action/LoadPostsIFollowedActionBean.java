@@ -40,7 +40,7 @@ public class LoadPostsIFollowedActionBean extends BaseActionBean{
 		messages = newList;
 		
 		Collections.reverse(followList);
-		return new ForwardResolution("/posts-I-followed.jsp");
+		return new ForwardResolution("/posts-I-followed2.jsp");
 	}
 	public List<Message> getMessages() {
 		return messages;

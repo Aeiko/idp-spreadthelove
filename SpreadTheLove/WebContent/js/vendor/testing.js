@@ -22,7 +22,7 @@ $(function() {
 				//the two faces are now quite close to each other;
 				//add your codes here!
 				
-				$.post('/SpreadTheLove/generateifeelyou.action', $("#feelForm_" + this.id).serialize(), function (data) {
+				$.post('/generateifeelyou.action', $("#feelForm_" + this.id).serialize(), function (data) {
 			    });
 				
 				console.log(this.id);

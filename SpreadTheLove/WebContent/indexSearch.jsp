@@ -3,7 +3,7 @@
 <%@ taglib prefix="s" uri="http://stripes.sourceforge.net/stripes.tld"%>
 <%@ taglib prefix="d"
 	uri="http://stripes.sourceforge.net/stripes-dynattr.tld"%>
-
+<%@ include file="googleAnalytics.jsp" %>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -129,7 +129,7 @@
 									type="password" placeholder="******">
 								<s:submit name="login" class="tiny radius button success"
 									value="login" />
-									<a href="/SpreadTheLove/passwordReset.action">Forget Password</a>
+									<a href="/passwordReset.action">Forget Password</a>
 							</div>
 						</s:form>
 
@@ -146,7 +146,7 @@
 	                                </div>
 	                                
 	                                <div class="small-4 columns" >
-                                	  <form action="/SpreadTheLove/indexsearch.action">
+                                	  <form action="/indexsearch.action">
 						                    <input tabindex="1" class="commentarea" name="search" type="search" placeholder="Search" />
 					                    </form> 
                                 	</div>
@@ -236,7 +236,7 @@
 								Username<input name="username" type="text" placeholder="username"> 
 								Password<input name="password" type="password" placeholder="******">
 								<s:submit name="login" class="tiny radius button success" value="login" />
-								<a href="/SpreadTheLove/passwordReset.action">Forget Password</a>
+								<a href="/passwordReset.action">Forget Password</a>
 							</div>
 						</s:form>
 			

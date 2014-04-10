@@ -1,4 +1,6 @@
+<%@ include file="googleAnalytics.jsp" %>
 <head>
+		
 		<meta charset="utf-8" />
 		<title>Spread the Love</title>
 		
@@ -13,7 +15,7 @@
         <link href='http://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/custom.css">
         <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-	  	
+	  		
 		<!-- Attach necessary JS -->
 		<script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
 		<script type="text/javascript" src="js/jquery.orbit-1.3.0.js"></script>	
@@ -64,14 +66,14 @@
         <div class="row">
             <fieldset class="large-3" style="float: left">
             <legend>Children</legend>
-            <a class="th" href="/SpreadTheLove/passwordResetChildren.action">
+            <a class="th" href="/passwordResetChildren.action">
 				<img src="img/children.jpg" />
             </a>
         </fieldset>
         
         <fieldset class="large-3" style="float: left">
                 <legend>Counsellor</legend>
-                <a class="th" href="/SpreadTheLove/passwordResetCounsellor.action">
+                <a class="th" href="/passwordResetCounsellor.action">
                     <img src="img/counsellor.png" style="height: 284px;"	/>
                 </a>
             </fieldset>

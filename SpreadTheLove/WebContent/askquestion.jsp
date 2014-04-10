@@ -1,3 +1,4 @@
+<%@ include file="googleAnalytics.jsp" %>
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
@@ -42,7 +43,7 @@
                                 <fieldset>
 	                                	<legend><h6>Ask a question...<i class=" fa fa-comment-o"></i> It's safe in here! :) </h6></legend>
 	                                	<textarea placeholder="Ask something or confide in us. We will try our best to help you."></textarea>
-	                                	<a href="/SpreadTheLove/askquestion.jsp" type="submit" class="button tiny" id="postbtn">Submit</a>
+	                                	<a href="/askquestion.jsp" type="submit" class="button tiny" id="postbtn">Submit</a>
 	                                </fieldset>
 	                                
 	                                  <div class="small-12 columns panel">
@@ -104,10 +105,10 @@
                             <input tabindex="1" type="search" placeholder="Search" >
                             <button type="submit" class="tiny" id="searchbtn">Submit</button>
                             <ul class="side-nav">
-                            	<li><a href="/SpreadTheLove/activity.action"><i class="fa fa-user fa-fw"></i>My Account</a></li>
+                            	<li><a href="/activity.action"><i class="fa fa-user fa-fw"></i>My Account</a></li>
                                 <li class="active"><a href="#"><i class="fa fa-home fa-fw"></i> Home</a></li>
-                                <li><a href="/SpreadTheLove/activity.action"><i class="fa fa-bolt fa-fw"></i> Activity</a></li>
-                                <li><a href="/SpreadTheLove/questions.action"><i class="fa fa-lightbulb-o fa-fw" ></i> Questions I asked</a></li>
+                                <li><a href="/activity.action"><i class="fa fa-bolt fa-fw"></i> Activity</a></li>
+                                <li><a href="/questions.action"><i class="fa fa-lightbulb-o fa-fw" ></i> Questions I asked</a></li>
                                 <li><a href="#"><i class="fa fa-anchor fa-fw"></i> Posts I follow</a></li>
                             </ul>
                         </div>

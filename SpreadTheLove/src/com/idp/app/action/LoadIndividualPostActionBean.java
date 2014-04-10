@@ -23,7 +23,7 @@ public class LoadIndividualPostActionBean extends BaseActionBean {
 	@DefaultHandler
 	public Resolution view(){
 		message = messageDao.findById(messageID);
-		return new ForwardResolution("/individualPost.jsp");
+		return new ForwardResolution("/individualPost2.jsp");
 	}
 
 

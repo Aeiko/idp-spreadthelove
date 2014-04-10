@@ -2,17 +2,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://stripes.sourceforge.net/stripes.tld"%>
 <%@ taglib prefix="d" uri="http://stripes.sourceforge.net/stripes-dynattr.tld"%>
+<%@ include file="googleAnalytics.jsp" %>
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Spread the love</title>
-        <link rel="stylesheet" href="/SpreadTheLove/css/foundation.css" />
-        <link rel="stylesheet" href="/SpreadTheLove/css/custom.css" />
-        <link rel="stylesheet" href="/SpreadTheLove/font-awesome-4.0.3/css/font-awesome.min.css">
-        <link rel="stylesheet" href="/SpreadTheLove/css/orbit-1.3.0.css">
-        <script src="/SpreadTheLove/js/vendor/modernizr.js"></script>
+        <link rel="stylesheet" href="/css/foundation.css" />
+        <link rel="stylesheet" href="/css/custom.css" />
+        <link rel="stylesheet" href="/font-awesome-4.0.3/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/css/orbit-1.3.0.css">
+        <script src="/js/vendor/modernizr.js"></script>
         
         
         <style>
@@ -71,7 +72,7 @@
 		<div class="container panel-3">
 			<div class="row">
 				<div class="small-6 columns text-left">
-					Spread The Love > Counsellor > <b>FAQ</b>
+					Spread The Love > Counsellor > <b>Help</b>
 				</div>
 				<div class="small-6 columns text-right">
 					
@@ -86,9 +87,9 @@
                     <p>You can post any questions anonymously, and any registered user will be able to answer your questions! :) </hp>
                    	<p>Refer to the following,</p>
                     <div id="responsive">
-						<img src="/SpreadTheLove/img/spread the love-01.png"/> 
-						<img src="/SpreadTheLove/img/spread the love-02.png"/> 
-						<img src="/SpreadTheLove/img/spread the love-03.png"/> 
+						<img src="/img/spread the love-01.png"/> 
+						<img src="/img/spread the love-02.png"/> 
+						<img src="/img/spread the love-03.png"/> 
 					</div>
                    	<hr>
                    	<h6><strong>2. How many questions can I ask?</strong></h6>
@@ -108,27 +109,27 @@
 				
 				<!-- Side Bar Nav -->
                 <div class="small-3 columns sidebar" style="min-height: 300px">
-                    <form action="/SpreadTheLove/counsellor/search.action">
+                    <form action="/counsellor/search.action">
 	                    <input tabindex="1" class="commentarea" name="search" type="search" placeholder="Search" />
                     </form>
                     <ul class="side-nav">
-                    	<li class="active"><a href="/SpreadTheLove/counsellor/home.action"><i class="fa fa-home fa-fw"></i> Home</a></li>
-                    	<li><a href="/SpreadTheLove/counsellor/pending.action"><i class="fa fa-ellipsis-h fa-fw"></i> Pending</a></li>
-                        <li><a href="/SpreadTheLove/activity.action"><i class="fa fa-bolt fa-fw"></i> Activity</a></li>
-                        <li><a href="/SpreadTheLove/counsellor/answered.action"><i class="fa fa-lightbulb-o fa-fw" ></i> Questions I answered</a></li>
-                        <li><a href="/SpreadTheLove/counsellor/followed.action"><i class="fa fa-star fa-fw"></i> Questions I followed</a></li>
+                    	<li class="active"><a href="/counsellor/home.action"><i class="fa fa-home fa-fw"></i> Home</a></li>
+                    	<li><a href="/counsellor/pending.action"><i class="fa fa-ellipsis-h fa-fw"></i> Pending</a></li>
+                        <li><a href="/activity.action"><i class="fa fa-bolt fa-fw"></i> Activity</a></li>
+                        <li><a href="/counsellor/answered.action"><i class="fa fa-lightbulb-o fa-fw" ></i> Questions I answered</a></li>
+                        <li><a href="/counsellor/followed.action"><i class="fa fa-star fa-fw"></i> Posts I followed</a></li>
                         <hr>
                         <li><a href="#"><i class="fa fa-fw fa-gears"></i> Account Settings</a></li>
-                        <li><a href="/SpreadTheLove/counsellor/cfaq.action"><i class="fa fa-question fa-fw"></i> FAQ</a></li>
-                        <li><a href="/SpreadTheLove/logout.action"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+                        <li><a href="/counsellor/cfaq.action"><i class="fa fa-question fa-fw"></i> Help</a></li>
+                        <li><a href="/logout.action"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
                     </ul>
                 </div>
 			</div>
 		</div>
-		<script src="/SpreadTheLove/js/vendor/jquery.js"></script>
-	    <script src="/SpreadTheLove/js/foundation.min.js"></script>
-	    <script src="/SpreadTheLove/js/isotope.pkgd.min.js"></script>
-	    <script type="text/javascript" src="/SpreadTheLove/js/vendor/jquery.orbit-1.3.0.js"></script> 
+		<script src="/js/vendor/jquery.js"></script>
+	    <script src="/js/foundation.min.js"></script>
+	    <script src="/js/isotope.pkgd.min.js"></script>
+	    <script type="text/javascript" src="/js/vendor/jquery.orbit-1.3.0.js"></script> 
 		
 		<script type="text/javascript">
 			$(window).load(function() {
@@ -163,7 +164,7 @@
 			    
 		  	});
 		    function follow(messageId){
-				$.post('/SpreadTheLove/generatefollow.action', $("#followForm_" + messageId).serialize(), function (data) {
+				$.post('/generatefollow.action', $("#followForm_" + messageId).serialize(), function (data) {
 			    });
 				$('#followbtn_' + messageId ).toggleClass("highlight");
 			}

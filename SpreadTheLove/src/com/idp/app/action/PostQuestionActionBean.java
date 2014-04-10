@@ -43,7 +43,7 @@ public class PostQuestionActionBean extends BaseActionBean {
 		}
 		messages = newList;
 		
-		return new ForwardResolution("/home.jsp");
+		return new ForwardResolution("/home2.jsp");
 	}
 
 

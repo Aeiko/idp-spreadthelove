@@ -3,6 +3,7 @@
 <%@ taglib prefix="s" uri="http://stripes.sourceforge.net/stripes.tld"%>
 <%@ taglib prefix="d"
 	uri="http://stripes.sourceforge.net/stripes-dynattr.tld"%>
+	<%@ include file="googleAnalytics.jsp" %>
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
@@ -120,34 +121,34 @@ h6 {
 			</div>
 			<!-- Side Bar Nav -->
 			<div class="small-3 columns sidebar" style="min-height: 300px">
-				<form action="/SpreadTheLove/counsellor/search.action">
+				<form action="/counsellor/search.action">
 					<input tabindex="1" class="commentarea" name="search" type="search"
 						placeholder="Search" />
 				</form>
 				<ul class="side-nav">
-					<li><a href="/SpreadTheLove/home.action"><i
+					<li><a href="/home.action"><i
 							class="fa fa-home fa-fw"></i> Home</a></li>
-					<li><a href="/SpreadTheLove/activity.action"><i
+					<li><a href="/activity.action"><i
 							class="fa fa-bolt fa-fw"></i> Activity</a></li>
-					<li><a href="/SpreadTheLove/questioniasked.action"><i
+					<li><a href="/questioniasked.action"><i
 							class="fa fa-lightbulb-o fa-fw"></i> Questions I asked</a></li>
-					<li><a href="/SpreadTheLove/postsifollowed.action"><i
+					<li><a href="/postsifollowed.action"><i
 							class="fa fa-star fa-fw"></i> Posts I followed </a></li>
 					<hr>
-					<li  class="active"><a href="/SpreadTheLove/accountsettings.action"><i
+					<li  class="active"><a href="/accountsettings.action"><i
 							class="fa fa-fw fa-gears"></i> Account Settings</a></li>
-					<li><a href="/SpreadTheLove/faq.action"><i
+					<li><a href="/faq.action"><i
 							class="fa fa-question fa-fw"></i> Help</a></li>
-					<li><a href="/SpreadTheLove/logout.action"><i
+					<li><a href="/logout.action"><i
 							class="fa fa-sign-out fa-fw"></i> Logout</a></li>
 				</ul>
 			</div>
 		</div>
 	</div>
 
-	<script src="/SpreadTheLove/js/vendor/jquery.js"></script>
-	<script src="/SpreadTheLove/js/foundation.min.js"></script>
-	<script src="/SpreadTheLove/js/isotope.pkgd.min.js"></script>
+	<script src="/js/vendor/jquery.js"></script>
+	<script src="/js/foundation.min.js"></script>
+	<script src="/js/isotope.pkgd.min.js"></script>
 	<script>
 			var $container = $('#container');
 			// init
@@ -165,12 +166,12 @@ h6 {
 			    
 		  	});
 		    function follow(messageId){
-				$.post('/SpreadTheLove/generatefollow.action', $("#followForm_" + messageId).serialize(), function (data) {
+				$.post('/generatefollow.action', $("#followForm_" + messageId).serialize(), function (data) {
 			    });
 				$('#followbtn_' + messageId ).toggleClass("highlight");
 			}
 		    function feel(messageId){
-				$.post('/SpreadTheLove/generateifeelyou.action', $("#feelForm_" + messageId).serialize(), function (data) {
+				$.post('/generateifeelyou.action', $("#feelForm_" + messageId).serialize(), function (data) {
 			    });
 				$('#feelbtn_' + messageId ).toggleClass("highlight");
 			}

@@ -1,3 +1,4 @@
+<%@ include file="googleAnalytics.jsp" %>
 <head>
 		<meta charset="utf-8" />
 		<title>Spread the Love</title>

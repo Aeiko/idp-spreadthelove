@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="s" uri="http://stripes.sourceforge.net/stripes.tld"%>
 <%@ taglib prefix="d" uri="http://stripes.sourceforge.net/stripes-dynattr.tld"%>
-
+<%@ include file="googleAnalytics.jsp" %>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -98,7 +98,7 @@
 							<s:submit name="register" class="tiny radius button success" id="register" value="register" />
 						</s:form>
 					</fieldset>
-					<fieldset class="small-6 columns" style="background: rgba(255,255,255,0.8);">
+					<fieldset class="small-6 columns" style="background: rgba(255,255,255,0.8); margin-bottom: 100px;" >
 						<legend>
 							<h6>&nbsp;<b>Member login</b>&nbsp;</h6>
 						</legend>
@@ -108,7 +108,7 @@
 							<label for="loginPassword">Password</label>
 							<input id="loginPassword" name="password" type="password" placeholder="******">
 							<s:submit name="login" class="tiny radius button success" value="login" />
-							<a href="/SpreadTheLove/passwordReset.action" class="button tiny secondary radius">Forget Password</a>
+							<a href="/passwordReset.action" class="button tiny secondary radius">Forget Password</a>
 						</s:form>
 					</fieldset>
                 </div>
@@ -141,11 +141,11 @@
 								Username<input name="username" type="text" placeholder="username"> 
 								Password<input name="password" type="password" placeholder="******">
 								<s:submit name="login" class="tiny radius button success" value="login" />
-								<a href="/SpreadTheLove/passwordReset.action">Forget Password</a>
+								<a href="/passwordReset.action">Forget Password</a>
 							</div>
 						</s:form>
-			
 					</fieldset>
+					
 				</div>
 			</div>
 		</div>
